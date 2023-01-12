@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS fighter_db;
+CREATE DATABASE fighter_db;
