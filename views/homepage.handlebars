@@ -1,0 +1,12 @@
+<!-- Loop over each object in the projects array -->
+{{#each characters as |character| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      {{!-- <a href="/project/{{project.id}}">{{project.name}}</a> --}}
+      <p>{{character.name}} {{character.user.username}} </p>
+    </h2>
+    
+  </div>
+</div>
+{{/each}}
