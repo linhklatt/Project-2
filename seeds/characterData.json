@@ -2,6 +2,18 @@
     {
         "name": "Best Archer",
         "role": "Archer"
+    },
+    {
+        "name": "Archer 2",
+        "role": "Archer"
+    },
+    {
+        "name": "Archer 3",
+        "role": "Archer"
+    },
+    {
+        "name": "Archer 4",
+        "role": "Archer"
     }
 ]
   

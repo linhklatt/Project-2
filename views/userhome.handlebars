@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{username}}!</h2>
+  </div>
+</div>
+
+{{#each characters as |character| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <p>{{character.name}} {{character.role}} </p>
+    </h2>
+    
+  </div>
+</div>
+{{/each}}
+
+<div>
+    <button>CREATE A CHARACTER</button>
+</div>
+
+<div>
+    <button>PLAY</button>
+</div>

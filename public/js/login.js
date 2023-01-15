@@ -15,7 +15,7 @@ const loginFormHandler = async (event) => {
   
       if (response.ok) {
         // If successful, redirect the browser to the home page where users can select and create their characters
-        document.location.replace('/');
+        document.location.replace('/home');
       } else {
         alert(response.statusText);
       }
@@ -39,7 +39,7 @@ const loginFormHandler = async (event) => {
   
       if (response.ok) {
         // If successful, redirect the browser to the home page where users can select and create their characters
-        document.location.replace('/');
+        document.location.replace('/home');
       } else {
         alert(response.statusText);
       }
