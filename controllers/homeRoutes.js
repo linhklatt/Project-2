@@ -27,6 +27,35 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/home', async (req, res) => {
+  try {
+    // Find the logged in user based on their session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Character }],
+    });
+
+    const user = userData.get({plain: true });
+
+    res.render('userhome', {
+      ...user,
+      logged_in: true
+    });
+    // // Get all characters for the user
+    // const characterData = await Character.findAll({
+    //   where: {},
+    //   include: [
+    //     {
+    //       model: User,
+    //     }
+    //   ]
+    // })
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.logged_in) {

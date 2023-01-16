@@ -5,29 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DB FighterZ</title>
-  <link rel="stylesheet" href="/css/jass.css">
+  {{!-- <link rel="stylesheet" href="/css/jass.css"> --}}
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
 </head>
 
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="sprite1"></span>
-        <a href="/">DB FighterZ</a>
-        <span role="img" aria-label="sprite2"></span>
-      </h1>
-
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/home">Character Select</a> |
-        <button class="no-button" id="logout">Logout</button>
-        {{else}}
-        <a href="/login">Login</a>
-        {{/if}}
+      <nav class="navbar navbar-expand-lg navbar-dark rounded" style="background-color: #182c25">
+        <a class="navbar-brand" style="color: bisque; font-size: 42px; font-weight: bold" href="/">DB FighterZ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dark-nav"
+          aria-controls="dark-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="dark-nav">
+          <ul class="navbar-nav ml-auto">
+            {{!-- <li class="nav-item">
+              <a class="nav-link" href="./index.html">Home</a>
+            </li> --}}
+            <li class="nav-item">
+              {{#if logged_in}}
+              <button class="no-button" id="logout">Logout</button>
+              {{else}}
+              <a class="nav-link" href="/login">Login</a>
+              {{/if}}
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
+
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
