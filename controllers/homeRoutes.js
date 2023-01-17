@@ -41,15 +41,6 @@ router.get('/home', async (req, res) => {
       ...user,
       logged_in: true
     });
-    // // Get all characters for the user
-    // const characterData = await Character.findAll({
-    //   where: {},
-    //   include: [
-    //     {
-    //       model: User,
-    //     }
-    //   ]
-    // })
 
   } catch (err) {
     res.status(500).json(err);

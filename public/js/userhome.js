@@ -1,29 +1,20 @@
-// const createButtonHandler = async (event) => {
-//     event.preventDefault();
-
-// };
-
-const deleteButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
-
-        const response = await fetch(`/api/characters/${id}`, {
-            method: 'DELETE',
-        });
-
-        if (response.ok) {
-            // alert(`response: ${response.ok}`);
-            document.location.replace('/home');
-        } else {
-            alert('Failed to delete character');
-        }
+const createButtonHandler = async (event) => {
+    event.preventDefault();
+    
+    const response = await fetch('/api/characters/create', {
+        method: 'GET'
+    });
+    
+    if (response.ok) {
+        console.log('Trying to create a new character');
+        console.log(response.ok);
+        document.location.replace('api/characters/create');
+    } else {
+        // alert('Create character failed');
+        alert(response.statusText);
     }
 };
 
-// document
-//     .querySelector('.create-character')
-//     .addEventListener('click', createButtonHandler);
-
 document
-    .querySelector('.character-list')
-    .addEventListener('click', deleteButtonHandler);
+    .querySelector('.create-character')
+    .addEventListener('click', createButtonHandler);
