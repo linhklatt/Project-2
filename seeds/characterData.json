@@ -1,6 +1,6 @@
 [
     {
-        "name": "Best Archer",
+        "name": "Archer 1",
         "role": "Archer"
     },
     {
@@ -14,6 +14,18 @@
     {
         "name": "Archer 4",
         "role": "Archer"
+    },
+    {
+        "name": "Mage 1",
+        "role": "Mage"
+    },
+    {
+        "name": "Mage 2",
+        "role": "Mage"
+    },
+    {
+        "name": "Mage 3",
+        "role": "Mage"
     }
 ]
   
