@@ -1,12 +1,22 @@
 const nameButtonHandler = async(event) => {
     event.preventDefault();
+    
+    const response = await fetch('./name', {
+        method: 'GET'
+    });
 
-    alert('moving to name character');
+    if (response.ok) {
+        document.location.replace('./name');
+    } else {
+        alert(response.statusText);
+    }
 };
 
 const characterTileHandler = async(event) => {
     if (event.target.hasAttribute('role')) {
         const role = event.target.getAttribute('role');
+
+        localStorage.setItem("role", role);
         
         switch(role) {
             case 'warrior':

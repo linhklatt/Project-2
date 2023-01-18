@@ -6,11 +6,8 @@ const createButtonHandler = async (event) => {
     });
     
     if (response.ok) {
-        console.log('Trying to create a new character');
-        console.log(response.ok);
         document.location.replace('api/characters/create');
     } else {
-        // alert('Create character failed');
         alert(response.statusText);
     }
 };
