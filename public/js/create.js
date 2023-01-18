@@ -39,3 +39,5 @@ document
 document
     .querySelector('.character-tile')
     .addEventListener('click', characterTileHandler);
+
+localStorage.setItem('role', '');

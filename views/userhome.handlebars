@@ -8,8 +8,8 @@
 <div class="character-list">
   {{#each characters as |character| }}
   <div class="row mb-4">
-    <div class="col-md-5">
-      <p>{{character.name}} {{character.role}} </p>
+    <div class="col-md-5 player-character">
+      <p char-id = {{character.id}}>{{character.name}} {{character.role}} </p>
     </div>
     <div>
       <button class="btn btn-sm btn-danger" data-id="{{character.id}}">DELETE</button>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="play-game">
-    <button>PLAY</button>
+    <button id='play-btn' hidden>PLAY</button>
 </div>
 
 <script src="./js/userhome.js"></script>
