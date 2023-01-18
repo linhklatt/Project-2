@@ -45,7 +45,28 @@ router.get('/home', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});
+
+router.get('/characters', async(req, res) => {
+  try {
+    const characterData = await Character.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+
+    const characters = characterData.map((character) => character.get({ plain: true }));
+
+    res.render('characters', {
+      characters
+    });
+  } catch (err) {
+    res.status(500).json(err)
+  }
+});
 
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
