@@ -18,6 +18,15 @@ router.get('/name', withAuth, async (req, res) => {
     }
 });
 
+router.get('/:id', withAuth, async (req, res) => {
+    try {
+        const characterData = await Character.findByPk(req.params.id);
+        res.json(characterData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.post('/', withAuth, async (req, res) => {
     try {
         const newCharacter = await Character.create({
