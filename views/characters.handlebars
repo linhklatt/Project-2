@@ -1,0 +1,11 @@
+<!-- Loop over each object in the characters array -->
+{{#each characters as |character| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <p>{{character.name}} {{character.user.username}} </p>
+    </h2>
+    
+  </div>
+</div>
+{{/each}}
