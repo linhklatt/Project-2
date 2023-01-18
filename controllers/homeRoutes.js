@@ -35,7 +35,7 @@ router.get('/home', async (req, res) => {
       include: [{ model: Character }],
     });
 
-    const user = userData.get({plain: true });
+    const user = userData.get({ plain: true });
 
     res.render('userhome', {
       ...user,
