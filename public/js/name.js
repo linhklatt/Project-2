@@ -18,6 +18,8 @@ const newCharacterButtonHandler = async(event) => {
         } else {
             alert('Failed to create character');
         }
+    } else {
+        alert('Please enter a name for your character.');
     }
 };
 

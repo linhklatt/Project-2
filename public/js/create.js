@@ -29,6 +29,8 @@ const characterTileHandler = async(event) => {
                 document.querySelector('.character-description').textContent="mage description"; 
                 break;
         }
+
+        document.querySelector('#name-btn').removeAttribute('hidden');
     }
 };
 
