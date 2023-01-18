@@ -9,3 +9,21 @@
     border-style: outset;
     border-width: 8px;
 }
+
+
+
+
+.player-character {
+    border-color: #e6e6e6;
+    border-style: solid;
+    text-decoration: none;
+    color: black;
+}
+.player-character:link { text-decoration: none; }
+.player-character:active { text-decoration: none; }
+.player-character:visited { text-decoration: none; }
+.player-character:hover { text-decoration: none;  color: black}
+
+.selected-character {
+    border-color: black;
+}

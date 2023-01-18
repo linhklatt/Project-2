@@ -8,20 +8,24 @@
 <div class="character-list">
   {{#each characters as |character| }}
   <div class="row mb-4">
-    <div class="col-md-5 player-character">
-      <p char-id = {{character.id}}>{{character.name}} {{character.role}} </p>
-    </div>
-    <div>
-      <button class="btn btn-sm btn-danger" data-id="{{character.id}}">DELETE</button>
+    <div class="col-md-5 player-character" id="player-character-{{character.id}}">
+        <p char-id = {{character.id}}>
+          <span img-id="img-{{character.id}}">{{{get_sprite character.role}}}</span>
+          {{character.name}} {{character.role}} 
+        </p>
     </div>
   </div>
   {{/each}}
 </div>
-<script src="./js/deleteCharacter.js"></script>
+
 {{/if}}
 
 <div class="create-character">
     <button>CREATE A CHARACTER</button>
+</div>
+
+<div class="delete-character">
+  <button class="btn btn-sm btn-danger" id="delete-btn" hidden>DELETE</button>
 </div>
 
 <div class="play-game">
