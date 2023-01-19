@@ -8,6 +8,7 @@ async function getPlayerCharacter() {
     const characterData = await response.json();
 
     console.log(characterData);
+    console.log(characterData.role);
 };
 
-getPlayerCharacter();
+module.exports = { getPlayerCharacter };

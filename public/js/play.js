@@ -11,6 +11,7 @@ const enemyHP = 100;
 let totalRounds = 0;
 
 // Setting up document
+let res;
 const attackButton = document.getElementById('attack-btn');
 const counterButton = document.getElementById('counter-btn');
 // const yourHP = document.getElementById('yourHP');
@@ -26,19 +27,19 @@ enableButtons = () => {
     playAgainButton.disabled = true;
 };
 
-fight = (id) => {
+function fight(id) {
     addRound();
     enemyMove(id);
     healthChange();
     gameOver();
 };
 
-addRound = () => {
+function addRound() {
     totalRounds += 1;
 };
 
 // Set up counter action to attack
-counter = (y, e) => {
+function counter(y, e) {
     let move = Math.floor((Math.random()*5));
     if (move >= 3 && y === 'attack') {
         res = "Enemy's counter was successful!"
@@ -56,28 +57,28 @@ counter = (y, e) => {
 };
 
 // Displays results of the round
-roundResults = () => {
+function roundResults() {
     announcements.innerHTML += res + "<br>";
 };
 
-healthChange = () => {
+function healthChange() {
     yourHealthBar.style.width = yourHP + "%";
     enemyHealthBar.style.width = enemyHP + "%";
 };
 
-gameOver = () => {
+function gameOver() {
     if (yourHP === 0 || enemyHP === 0) {
         res = "Game Over!";
         roundResults(res);
-        attackButton.disabled = true;
-        counterButton.disabled = true;
-        playAgainButton.disabled = false;
+        // attackButton.disabled = true;
+        // counterButton.disabled = true;
+        // playAgainButton.disabled = false;
     }
 };
 
 // The Game
 // Takes the moves of the player and generates one for the enemy then runs the damage step
-enemyMove = (id) => {
+function enemyMove() {
     let move = Math.floor((Math.random()*4) + 1);
     if (move <= 3) {
         savedEnemyMove = 'attack';
@@ -90,7 +91,7 @@ enemyMove = (id) => {
 };
 
 // Processes the move to a result
-damageStep = (y, e) => {
+function damageStep(y, e) {
     if (y === 'attack' && e === 'attack') {
         res = "Both players take damage!";
         if (enemyHP >= 10 && yourHP >= 10) {
@@ -111,4 +112,25 @@ damageStep = (y, e) => {
     }
 };
 
+attackButton.addEventListener("click", fight());
+counterButton.addEventListener("click", fight());
+
 window.onload = enableButtons();
+
+// var player = {
+//     name: "Player",
+//     health: 100,
+//     attack: function() {
+//         var damage = Math.floor(Math.random() * 20) + 1;
+//         return damage;
+//     }
+// };
+
+// var enemy = {
+//     name: "Enemy",
+//     health: 100,
+//     attack: function() {
+//         var damage = Math.floor(Math.random() * 20) + 1;
+//         return damage;
+//     }
+// };

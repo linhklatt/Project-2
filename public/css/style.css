@@ -91,30 +91,21 @@
   }
 }
   
-/* for /play page */
-button {
-    background: #eee;
-    padding: 10px 25px;
-    margin-bottom: 15px;
-    display: block;
-}
-
-#yourHP, #enemyHP {
-    position: relative;
-    height: 30px;
-    width: 250px;
-    border: white 3px solid;
-    border-radius: 3px;
-    margin-right: 20px;
-    display: inline-block;
-}
-
-#yourHealthBar, #enemyHealthBar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
+/* for /play page */    
+#healthContainer {
     width: 100%;
+    display: flex;
+}
+
+#yourHealthBar {
+    width: 50%;
+    height: 20px;
+    background-color: lightgreen;
+}
+
+#enemyHealthBar {
+    width: 50%;
+    height: 20px;
     background-color: lightgreen;
 }
 

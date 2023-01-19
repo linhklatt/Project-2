@@ -1,5 +1,5 @@
 <script src="../../js/pullCharacterData.js"></script>
-<link rel="stylesheet" href="../public/css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 <div class="row">
   <div class="col-auto">
@@ -7,18 +7,20 @@
   </div>
 </div>
 
-<div class="row mb-4">
+<div class="row mb-4" id="play-body">
     <div class="col-md-5">
       {{!-- These are the buttons used to control your character. --}}
-        <button class="btn btn-small btn-danger" id="attack-btn" onClick="fight(id)">ATTACK</button>
-        <button class="btn btn-small btn-danger" id="counter-btn" onClick="fight(id)">COUNTER</button>
+        <button class="btn btn-small" id="attack-btn">ATTACK</button>
+        <button class="btn btn-small" id="counter-btn">COUNTER</button>
       {{!-- These will display your HP, enemy HP, and a health bar for each character. --}}
+      <div id="healthContainer">
         <div id="yourHP"></div><div id="yourHealthBar"></div>
         <div id="enemyHP"></div><div id="enemyHealthBar"></div>
+      </div>
       {{!-- This will display the actions that are being committed. --}}
       <div id="announcements"></div>
       <div class="btn btn-small" id="playAgain-btn"></div>
     </div>
 </div>
 
-{{!-- <script src="../public/js/play.js"></script> --}}
+<script src="../js/play.js"></script>
