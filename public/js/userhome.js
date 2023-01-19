@@ -65,6 +65,17 @@ const playButtonHandler = async (event) => {
     const id = localStorage.getItem("selectedCharId");
 
     if (id) {
+        // Get the player's selected character data
+        const playerData = await getCharacterData(id);
+        localStorage.setItem("playerData", JSON.stringify(playerData));
+        
+        // Get an array of all ids on the server, excluding the player's selected character id
+        const ids = await getCharacterIds(id);
+
+        // Passes the array of all ids and stores data for four unique opponents in local storage
+        await getOpponents(ids);
+        
+        // Fetch and render the /play page
         const response = await fetch('api/play', {
             method: 'GET'
         });
@@ -77,6 +88,53 @@ const playButtonHandler = async (event) => {
     } else {
         alert('Please select a character first.');
     } 
+};
+
+async function getCharacterData(id) {
+    const response = await fetch(`/api/characters/${id}`, {
+        method: 'GET'
+    });
+
+    if (response.ok) {
+        const characterData = await response.json();
+        return characterData;
+    } else {
+        alert(response.statusText);
+    }
+};
+
+async function getCharacterIds(id) {
+    const response = await fetch(`/api/characters/get-ids/${id}`, {
+        method: 'GET'
+    });
+
+    if (response.ok) {
+        const idData = await response.json();
+        const ids = idData.map((data) => data.id);
+        return ids;
+    } else {
+        alsert(response.statusText);
+    }
+};
+
+async function getOpponents(ids) {
+    // Loop four times to get four opponents for the player
+    for (let i = 0; i < 4; i++) {
+        // Get a random index from the ids array
+        const randomIndex = Math.floor((Math.random()*ids.length));
+
+        // Store the opponent id of the random index
+        const opponentId = ids[randomIndex];
+
+        // Remove the selected opponent id from the ids array
+        ids.splice(randomIndex, 1);        
+
+        // Fetch the opponent's character data
+        const opponentData = await getCharacterData(opponentId);
+
+        // Store the opponent's character data in local storage
+        localStorage.setItem(`opponentData${i+1}`, JSON.stringify(opponentData));
+    }
 };
 
 document
@@ -97,3 +155,8 @@ document
 
 localStorage.setItem("selectedCharId", '');
 localStorage.setItem("previouslySelected", '');
+localStorage.setItem("playerData", '');
+localStorage.setItem("opponentData1", '');
+localStorage.setItem("opponentData2", '');
+localStorage.setItem("opponentData3", '');
+localStorage.setItem("opponentData4", '');
