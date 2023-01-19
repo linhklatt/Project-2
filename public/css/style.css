@@ -100,6 +100,25 @@
 .arch-btn:focus { background-image: url("../images/archer-shoot-right.gif"); }
 .mage-btn:focus { background-image: url("../images/mage-walk-right.gif"); }
 
+/* userhome styles */
+.userhome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-character-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-character-list p {
+    margin: 0;
+    padding: 8px;
+}
 
 .player-character {
   border-color: #e6e6e6;
