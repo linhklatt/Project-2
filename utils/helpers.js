@@ -6,11 +6,13 @@ module.exports = {
   get_sprite: (role) => {
     switch(role) {
       case 'warrior':
-        return `<img src="../../images/warrior-standing.png" />`;
+        return `<img src="../../images/warr-static-right.png" />`;
       case 'archer':
         return `<img src="../../images/archer-standing.png" />`;
+      case 'mage':
+        return `<img src="../../images/mage-static-right.png" />`;
       default:
-        return `<img src="../../images/warrior-standing.png" />`;
+        return `<img src="../../images/default.png" />`;
     }
   }
 };
