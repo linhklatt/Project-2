@@ -8,7 +8,7 @@
   border: #e6e6e6;
   border-style: outset;
   border-width: 8px;
-  text-decoration: none;
+  
 }
 
 .play-for-free {
@@ -32,11 +32,13 @@
 
 .play-for-free:hover {
   background-color: #fff;
+  text-decoration: none;
 }
 
 .play-for-free:active {
     box-shadow: #422800 2px 2px 0 0;
     transform: translate(2px, 2px);
+    text-decoration: none;
 }
 
 .create-character-container {
@@ -61,12 +63,12 @@
 }
 
 .warr-btn { background-image: url("../images/warr-static-right.png"); }
-.arch-btn { background-image: url("../images/archer-standing.png"); }
+.arch-btn { background-image: url("../images/archer-static-right.png"); }
 .mage-btn { background-image: url("../images/mage-static-right.png"); }
 
 .class-btn:focus { border-width: 4px; }
 .warr-btn:focus { background-image: url("../images/warr-walk-right.gif"); }
-.arch-btn:focus { background-image: url("../images/archer-attack-2x.gif"); }
+.arch-btn:focus { background-image: url("../images/archer-shoot-right.gif"); }
 .mage-btn:focus { background-image: url("../images/mage-walk-right.gif"); }
 
 .player-character {
@@ -82,6 +84,18 @@
 
 .selected-character {
     border-color: black;
+}
+
+.new-character-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.new-character-form p {
+    margin-top: 16px;
+    margin-bottom: 0px;
 }
 
 @media (min-width: 768px) {
