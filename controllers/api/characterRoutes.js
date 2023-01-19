@@ -12,16 +12,6 @@ router.get('/create', withAuth, async (req, res) => {
     }
 });
 
-router.get('/name', withAuth, async (req, res) => {
-    try {
-        res.render('name', {
-            logged_in: req.session.logged_in
-        });
-    } catch(err) {
-        res.status(500).json(err);
-    }
-});
-
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const characterData = await Character.findByPk(req.params.id);
