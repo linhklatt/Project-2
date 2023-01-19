@@ -46,6 +46,11 @@
     margin: 0px;
 }
 
+.character-tile {
+    display: flex;
+    flex-direction: row;
+}
+
 .class-btn {
     padding: 0px;
     margin: 8px;
