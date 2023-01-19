@@ -1,14 +1,25 @@
-const nameButtonHandler = async(event) => {
+const newCharacterButtonHandler = async(event) => {
     event.preventDefault();
-    
-    const response = await fetch('./name', {
-        method: 'GET'
-    });
 
-    if (response.ok) {
-        document.location.replace('./name');
+    const name = document.querySelector('#character-name').value.trim();
+    const role = localStorage.getItem("role");
+
+    if (name && role) {
+        const response = await fetch(`/api/characters/`, {
+            method: 'POST',
+            body: JSON.stringify({ name, role }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            document.location.replace('/home');
+        } else {
+            alert('Failed to create character');
+        }
     } else {
-        alert(response.statusText);
+        alert('Please enter a name for your character.');
     }
 };
 
@@ -30,13 +41,13 @@ const characterTileHandler = async(event) => {
                 break;
         }
 
-        document.querySelector('#name-btn').removeAttribute('hidden');
+        document.querySelector('.new-character-form').removeAttribute('hidden');
     }
 };
 
 document
-    .querySelector('.name-character')
-    .addEventListener('click', nameButtonHandler);
+    .querySelector('.new-character-form')
+    .addEventListener('submit', newCharacterButtonHandler);
 
 document
     .querySelector('.character-tile')
