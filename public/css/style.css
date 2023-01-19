@@ -154,18 +154,6 @@
     display: flex;
 }
 
-#yourHealthBar {
-    width: 50%;
-    height: 20px;
-    background-color: lightgreen;
-}
-
-#enemyHealthBar {
-    width: 50%;
-    height: 20px;
-    background-color: lightgreen;
-
-/* for /play page */
 button {
   background: #eee;
   padding: 10px 25px;
@@ -178,7 +166,7 @@ button {
   position: relative;
   height: 30px;
   width: 250px;
-  border: white 3px solid;
+  border: black 3px solid;
   border-radius: 3px;
   margin-right: 20px;
   display: inline-block;
@@ -196,10 +184,11 @@ button {
 
 #announcements {
   border: black 2px solid;
+  background-color: lightgrey;
 }
 
 #announcements span {
-  color: white;
+  color: darkred;
 }
 
 #btn {
