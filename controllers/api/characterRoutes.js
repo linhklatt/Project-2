@@ -4,7 +4,9 @@ const withAuth = require('../../utils/auth');
 
 router.get('/create', withAuth, async (req, res) => {
     try {
-        res.render('create');
+        res.render('create', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -12,7 +14,9 @@ router.get('/create', withAuth, async (req, res) => {
 
 router.get('/name', withAuth, async (req, res) => {
     try {
-        res.render('name');
+        res.render('name', {
+            logged_in: req.session.logged_in
+        });
     } catch(err) {
         res.status(500).json(err);
     }
