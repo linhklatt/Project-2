@@ -26,10 +26,10 @@ const characterSelectHandler = async (event) => {
         if (previouslySelected) {
             document
                 .querySelector(`#player-character-${previouslySelected}`)
-                .setAttribute("class", "col-md-5 player-character");
+                .setAttribute("class", "player-character");
         }
         const playerCharacter = document.querySelector(`#player-character-${selectedCharId}`);
-        playerCharacter.setAttribute("class", "col-md-5 player-character selected-character");
+        playerCharacter.setAttribute("class", "player-character selected-character");
         localStorage.setItem("previouslySelected", selectedCharId);
 
         document.querySelector('#delete-btn').removeAttribute("hidden");
@@ -40,32 +40,43 @@ const characterSelectHandler = async (event) => {
 const deleteButtonHandler = async(event) => {
     event.preventDefault();
 
-    if(confirm('Are you sure you want to delete this character?')) {
-        const id = localStorage.getItem("selectedCharId");
-        const response = await fetch(`/api/characters/${id}`, {
-            method: 'DELETE',
-        });
+    const id = localStorage.getItem("selectedCharId");
 
-        if (response.ok) {
-            document.location.replace('/home');
-        } else {
-            alert('Failed to delete character.');
+    if (id) {
+        if (confirm('Are you sure you want to delete this character?')) {
+            const response = await fetch(`/api/characters/${id}`, {
+                method: 'DELETE',
+            });
+    
+            if (response.ok) {
+                document.location.replace('/home');
+            } else {
+                alert('Failed to delete character.');
+            }
         }
+    } else {
+        alert('Please select a character to delete.');
     }
 };
 
 const playButtonHandler = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('api/play', {
-        method: 'GET'
-    });
+    const id = localStorage.getItem("selectedCharId");
 
-    if (response.ok) {
-        document.location.replace('api/play');
+    if (id) {
+        const response = await fetch('api/play', {
+            method: 'GET'
+        });
+
+        if (response.ok) {
+            document.location.replace('api/play');
+        } else {
+            alert(response.statusText)
+        }
     } else {
-        alert(response.statusText)
-    }
+        alert('Please select a character first.');
+    } 
 };
 
 document
@@ -73,7 +84,7 @@ document
     .addEventListener('click', createButtonHandler);
 
 document
-    .querySelector('.character-list')
+    .querySelector('.player-character-list')
     .addEventListener('click', characterSelectHandler);
 
 document

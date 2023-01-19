@@ -8,56 +8,62 @@
   border: #e6e6e6;
   border-style: outset;
   border-width: 8px;
-  text-decoration: none;
 }
 
 .play-for-free {
-    background-color: #fbeee0;
-    border: 2px solid #422800;
-    border-radius: 30px;
-    box-shadow: #422800 4px 4px 0 0;
-    color: #422800;
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 0 18px;
-    line-height: 50px;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
 
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.play-for-free a:link {
+  text-decoration: none;
+}
 .play-for-free:hover {
   background-color: #fff;
+  text-decoration: none;
 }
 
 .play-for-free:active {
-    box-shadow: #422800 2px 2px 0 0;
-    transform: translate(2px, 2px);
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+  text-decoration: none;
 }
 
 .create-character-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
 }
 
 .character-tile {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .class-btn {
-    padding: 0px;
-    margin: 8px;
-    width: 192px;
-    height: 192px;
-    background-size: 100%;
-    border-width: 2px;
+  padding: 0px;
+  margin: 8px;
+  width: 192px;
+  height: 192px;
+  background-size: 100%;
+  border-width: 2px;
 }
 
 .warr-btn { background-image: url("../images/warr-static-right.png"); }
@@ -69,19 +75,69 @@
 .arch-btn:focus { background-image: url("../images/archer-attack-2x.gif"); }
 .mage-btn:focus { background-image: url("../images/mage-walk-right.gif"); }
 
-.player-character {
-    border-color: #e6e6e6;
-    border-style: solid;
-    text-decoration: none;
-    color: black;
+.warr-btn { background-image: url("../images/warr-static-right.png"); }
+.arch-btn { background-image: url("../images/archer-static-right.png"); }
+.mage-btn { background-image: url("../images/mage-static-right.png"); }
+
+.class-btn:focus { border-width: 4px; }
+.warr-btn:focus { background-image: url("../images/warr-walk-right.gif"); }
+.arch-btn:focus { background-image: url("../images/archer-shoot-right.gif"); }
+.mage-btn:focus { background-image: url("../images/mage-walk-right.gif"); }
+
+/* userhome styles */
+.userhome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
-.player-character:link { text-decoration: none; }
-.player-character:active { text-decoration: none; }
-.player-character:visited { text-decoration: none; }
-.player-character:hover { text-decoration: none;  color: black}
+
+.player-character-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-character-list p {
+    margin: 0;
+    padding: 8px;
+}
+
+.player-character {
+  border-color: #e6e6e6;
+  border-style: solid;
+  text-decoration: none;
+  color: black;
+}
+.player-character:link {
+  text-decoration: none;
+}
+.player-character:active {
+  text-decoration: none;
+}
+.player-character:visited {
+  text-decoration: none;
+}
+.player-character:hover {
+  text-decoration: none;
+  color: black;
+}
 
 .selected-character {
-    border-color: black;
+  border-color: black;
+}
+
+.new-character-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.new-character-form p {
+  margin-top: 16px;
+  margin-bottom: 0px;
 }
 
 @media (min-width: 768px) {
@@ -91,7 +147,8 @@
   }
 }
   
-/* for /play page */    
+/* for /play page */ 
+
 #healthContainer {
     width: 100%;
     display: flex;
@@ -107,12 +164,47 @@
     width: 50%;
     height: 20px;
     background-color: lightgreen;
+
+/* for /play page */
+button {
+  background: #eee;
+  padding: 10px 25px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+#yourHP,
+#enemyHP {
+  position: relative;
+  height: 30px;
+  width: 250px;
+  border: white 3px solid;
+  border-radius: 3px;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+#yourHealthBar,
+#enemyHealthBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: lightgreen;
 }
 
 #announcements {
-    border: black 2px solid;
+  border: black 2px solid;
 }
 
 #announcements span {
-    color: white;
+  color: white;
+}
+
+#btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 15px;
 }

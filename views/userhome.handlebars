@@ -1,35 +1,46 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
-  </div>
-</div>
-
-{{#if characters.length}}
-<div class="character-list">
-  {{#each characters as |character| }}
-  <div class="row mb-4">
-    <div class="col-md-5 player-character" id="player-character-{{character.id}}">
-        <p char-id = {{character.id}}>
-          <span img-id="img-{{character.id}}">{{{get_sprite character.role}}}</span>
-          {{character.name}} {{character.role}} 
-        </p>
+<div class="userhome-container">
+  <div class="row">
+    <div class="col-auto">
+      <h2>Welcome, {{username}}!</h2>
     </div>
   </div>
-  {{/each}}
+
+  {{#if characters.length}}
+  <div class="player-character-list">
+    {{#each characters as |character|}}
+      <div class="player-character-tile">
+        <div
+          class="player-character"
+          id="player-character-{{character.id}}"
+        >
+          <p char-id={{character.id}}>
+            <span img-id="img-{{character.id}}">{{{get_sprite
+                character.role
+              }}}</span>
+            {{character.name}}
+            {{character.role}}
+          </p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  {{/if}}
+
+  <div id="btn">
+    <div class="create-character">
+      <button>CREATE A CHARACTER</button>
+    </div>
+    <div class="play-game">
+      <button id="play-btn">PLAY</button>
+    </div>
+    <div class="delete-character">
+      <button id="delete-btn">DELETE</button>
+    </div>
+  </div>
 </div>
 
-{{/if}}
 
-<div class="create-character">
-    <button>CREATE A CHARACTER</button>
-</div>
 
-<div class="delete-character">
-  <button class="btn btn-sm btn-danger" id="delete-btn" hidden>DELETE</button>
-</div>
 
-<div class="play-game">
-    <button id='play-btn' hidden>PLAY</button>
-</div>
 
 <script src="./js/userhome.js"></script>

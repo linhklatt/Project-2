@@ -8,7 +8,7 @@ module.exports = {
       case 'warrior':
         return `<img src="../../images/warr-static-right.png" />`;
       case 'archer':
-        return `<img src="../../images/archer-standing.png" />`;
+        return `<img src="../../images/archer-static-right.png" />`;
       case 'mage':
         return `<img src="../../images/mage-static-right.png" />`;
       default:
