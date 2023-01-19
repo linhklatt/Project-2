@@ -1,0 +1,48 @@
+/* for /play page */
+* {
+    box-sizing: border-box;
+}
+
+html {
+width: 100%;
+}
+
+body {
+    width: 960px;
+    background: lightgrey;
+    margin: 50px;
+}
+
+button {
+    background: #eee;
+    padding: 10px 25px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+#yourHP, #enemyHP {
+    position: relative;
+    height: 30px;
+    width: 250px;
+    border: white 3px solid;
+    border-radius: 3px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+#yourHealthBar, #enemyHealthBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: lightgreen;
+}
+
+#announcements {
+    border: black 2px solid;
+}
+
+#announcements span {
+    color: white;
+}
