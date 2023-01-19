@@ -1,31 +1,39 @@
 [
     {
         "name": "Archer 1",
-        "role": "Archer"
+        "role": "archer"
     },
     {
         "name": "Archer 2",
-        "role": "Archer"
+        "role": "archer"
     },
     {
         "name": "Archer 3",
-        "role": "Archer"
+        "role": "archer"
     },
     {
         "name": "Archer 4",
-        "role": "Archer"
+        "role": "archer"
     },
     {
         "name": "Mage 1",
-        "role": "Mage"
+        "role": "mage"
     },
     {
         "name": "Mage 2",
-        "role": "Mage"
+        "role": "mage"
     },
     {
         "name": "Mage 3",
-        "role": "Mage"
+        "role": "mage"
+    },
+    {
+        "name": "Warrior 1",
+        "role": "warrior"
+    },
+    {
+        "name": "Warrior 2",
+        "role": "warrior"
     }
 ]
   
