@@ -148,6 +148,11 @@
 }
 
 /* for /play page */
+#healthContainer {
+  width: 100%;
+  display: flex;
+}
+
 button {
   background: #eee;
   padding: 10px 25px;
@@ -160,7 +165,7 @@ button {
   position: relative;
   height: 30px;
   width: 250px;
-  border: white 3px solid;
+  border: black 3px solid;
   border-radius: 3px;
   margin-right: 20px;
   display: inline-block;
@@ -178,10 +183,11 @@ button {
 
 #announcements {
   border: black 2px solid;
+  background-color: lightgrey;
 }
 
 #announcements span {
-  color: white;
+  color: darkred;
 }
 
 #btn {
@@ -189,4 +195,95 @@ button {
   flex-direction: row;
   justify-content: space-around;
   gap: 15px;
+}
+
+.character-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.playscreen-player {
+  height: 192px;
+  width: 192px;
+  background-color: lightcoral;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.playscreen-opponent {
+  height: 192px;
+  width: 192px;
+  background-color: aquamarine;
+  background-size: 100%;
+}
+
+.warr-walk-right { background-image: url("../images/warr-walk-right.gif"); }
+.arch-walk-right { background-image: url("../images/archer-attack-2x.gif"); }
+.mage-walk-right { background-image: url("../images/mage-walk-right.gif"); }
+
+.warr-attack-right {
+  background-image: url("../images/warr-attack-right.gif");
+  background-size: 100%;
+}
+
+.shake-horizontal {
+	-webkit-animation: shake-horizontal 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: shake-horizontal 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+@-webkit-keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
+  }
+}
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
+  }
 }

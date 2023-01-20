@@ -1,5 +1,5 @@
-<script src="../../js/pullCharacterData.js"></script>
-<link rel="stylesheet" href="../public/css/style.css">
+<div class="play-container">
+
 
 <div class="row">
   <div class="col-auto">
@@ -7,18 +7,41 @@
   </div>
 </div>
 
+<div class="character-container">
+  <div class="playscreen-player" id="player">
+
+  </div>
+  <div class="playscreen-opponent" id="opponent">
+
+  </div>
+  <div class="waitlist">
+
+  </div>
+</div>
+
 <div class="row mb-4">
     <div class="col-md-5">
       {{!-- These are the buttons used to control your character. --}}
-        <button class="btn btn-small btn-danger" id="attack-btn" onClick="fight(id)">ATTACK</button>
-        <button class="btn btn-small btn-danger" id="counter-btn" onClick="fight(id)">COUNTER</button>
+      <div>
+        <button class="btn btn-small" id="attack" onClick="fight(id)">ATTACK</button>
+        <button class="btn btn-small" id="counter" onClick="fight(id)">COUNTER</button>
+      </div>
+        
       {{!-- These will display your HP, enemy HP, and a health bar for each character. --}}
-        <div id="yourHP"></div><div id="yourHealthBar"></div>
-        <div id="enemyHP"></div><div id="enemyHealthBar"></div>
+      <div id="healthContainer">
+        <div id="yourHP">
+          <div id="yourHealthBar"></div>
+        </div>
+        <div id="enemyHP">
+          <div id="enemyHealthBar"></div>
+        </div>
+      </div>
       {{!-- This will display the actions that are being committed. --}}
       <div id="announcements"></div>
-      <div class="btn btn-small" id="playAgain-btn"></div>
+      <div class="btn btn-small" id="end-game" style="display: none">END</div>
     </div>
 </div>
 
-{{!-- <script src="../public/js/play.js"></script> --}}
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="../../js/play.js"></script>
