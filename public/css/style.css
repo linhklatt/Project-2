@@ -302,6 +302,9 @@ button {
   align-items: center;
 }
 
+.stats-container .btn {
+  background-color: lightgrey;
+}
 .stats-container p {
   margin: 0px;
 }

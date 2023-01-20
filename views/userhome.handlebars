@@ -9,14 +9,9 @@
   <div class="player-character-list">
     {{#each characters as |character|}}
       <div class="player-character-tile">
-        <div
-          class="player-character"
-          id="player-character-{{character.id}}"
-        >
+        <div class="player-character" id="player-character-{{character.id}}">
           <p char-id={{character.id}}>
-            <span img-id="img-{{character.id}}">{{{get_sprite
-                character.role
-              }}}</span>
+            <span img-id="img-{{character.id}}">{{{get_sprite character.role}}}</span>
             {{character.name}}
             {{character.role}}
           </p>
