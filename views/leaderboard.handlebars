@@ -1,0 +1,37 @@
+<div class="leaderboard">
+  <h2>All Users</h2>
+  <div class="leaderboard-row" id="leaderboard-col-head">
+    <div class="lb-col">
+      <p>ROLE</p>
+    </div>
+    <div class="lb-col">
+      <p>CHARACTER NAME</p>
+    </div>
+    <div class="lb-col">
+      <p>USER</p>
+    </div>
+    <div class="lb-col">
+      <p>STATS</p>
+    </div>
+  </div>
+  {{#each characters as |character| }}
+  <div class="leaderboard-row">
+    <div class="lb-col">
+      {{{get_sprite character.role}}}
+    </div>
+    <div class="lb-col">
+      <p>{{character.name}}</p>
+    </div>
+    <div class="lb-col">
+      <p>{{character.user.username}}</p>
+    </div>
+    <div class="lb-col">
+      <ul>
+        <li>hp: {{character.health}}</li>
+        <li>atk: {{character.attack}}</li>
+        <li>ctr: {{character.counter}}</li>
+      </ul>
+    </div>
+  </div>
+  {{/each}}
+</div>
