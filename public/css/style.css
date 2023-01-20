@@ -215,7 +215,8 @@ button {
   height: 192px;
   width: 192px;
   background-color: aquamarine;
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .warr-walk-right { background-image: url("../images/warr-walk-right.gif"); }
@@ -286,4 +287,25 @@ button {
     -webkit-transform: translateX(-8px);
             transform: translateX(-8px);
   }
+}
+
+.end-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats-container p {
+  margin: 0px;
+}
+
+#return-home {
+    background-color: #fbeee0;
 }
