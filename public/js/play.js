@@ -31,6 +31,7 @@ function init() {
     playerModel.append(`<p>${player.name}</p>`);
     opponentModel.append(`<p>${opponent1.name}</p>`);
     walkRight(playerModel, player.role);
+    walkRight(opponentModel, opponent1.role);
     enableButtons();
 }
 
@@ -79,10 +80,12 @@ attackAnimation = async () => {
     let animationTimer = attackTime;
 
     playerModel.addClass("warr-attack-right");
+    opponentModel.removeClass("shake-horizontal")
     let timerInterval = setInterval(function() {
         animationTimer -= delay;
         if (animationTimer == 0) {
             playerModel.removeClass("warr-attack-right");
+            opponentModel.addClass("shake-horizontal");
             clearInterval(timerInterval);
             enableButtons();
         }
@@ -183,4 +186,3 @@ damageStep = async (y, e) => {
 };
 
 init();
-
