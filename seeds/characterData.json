@@ -1,38 +1,30 @@
 [
     {
-        "name": "Archer 1",
-        "role": "archer"
-    },
-    {
-        "name": "Archer 2",
-        "role": "archer"
-    },
-    {
-        "name": "Archer 3",
-        "role": "archer"
-    },
-    {
-        "name": "Archer 4",
-        "role": "archer"
-    },
-    {
-        "name": "Mage 1",
-        "role": "mage"
-    },
-    {
-        "name": "Mage 2",
-        "role": "mage"
-    },
-    {
-        "name": "Mage 3",
-        "role": "mage"
-    },
-    {
-        "name": "Warrior 1",
+        "name": "Ofrid",
         "role": "warrior"
     },
     {
-        "name": "Warrior 2",
+        "name": "Freygrund",
+        "role": "warrior"
+    },
+    {
+        "name": "Nargwulf",
+        "role": "warrior"
+    },
+    {
+        "name": "Anchop",
+        "role": "warrior"
+    },
+    {
+        "name": "Tharghor",
+        "role": "warrior"
+    },
+    {
+        "name": "Gundmak",
+        "role": "warrior"
+    },
+    {
+        "name": "Helmbeorn",
         "role": "warrior"
     }
 ]

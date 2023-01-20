@@ -1,6 +1,22 @@
 const router = require('express').Router();
 const { Character } = require('../../models');
 const withAuth = require('../../utils/auth');
+const  { Op } = require('sequelize');
+
+// returns JSON object containing a list of all active id's in the Character table.
+router.get('/get-ids/:id', withAuth, async (req, res) => {
+    try {
+        const idData = await Character.findAll({
+            // Return all character.id Where character.id != req.params.id
+            where: { id: { [Op.ne]: req.params.id } },
+            attributes: { exclude: ['name', 'role', 'user_id'] },
+        });
+
+        res.json(idData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.get('/create', withAuth, async (req, res) => {
     try {
