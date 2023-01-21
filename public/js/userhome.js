@@ -56,8 +56,32 @@ const deleteButtonHandler = async(event) => {
         }
     } else {
         alert('Please select a character to delete.');
-    }
-};
+    //     var message = 'Are you sure you want to delete this character?';
+    //     $('confirmModal').find('.c-modal-body p').text(message);
+    //     $('confirmModal').modal('show');
+    // } else {
+    //     var message = 'Please select a character to delete.'
+    //     $('alertModal').find('.modal-body p').text(message);
+    //     $('alertModal').modal('show');
+    // }
+}};
+
+// const confirmDeleteButton = document.getElementById('confirm-delete')
+// confirmDeleteButton.addEventListener('click', async(event) => {
+//     event.preventDefault();
+
+//     const id = localStorage.getItem("selectedCharId");
+//     const response = await fetch(`/api/characters/${id}`, {
+//         method: 'DELETE',
+//     });
+//     if (response.ok) {
+//         document.location.replace('/home');
+//     } else {
+//         var message = 'Failed to delete character.'
+//         $('alertModal').find('.modal-body p').text(message);
+//         $('alertModal').modal('show');
+//     }
+// });
 
 const playButtonHandler = async (event) => {
     event.preventDefault();
