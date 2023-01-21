@@ -16,10 +16,16 @@ const newCharacterButtonHandler = async(event) => {
         if (response.ok) {
             document.location.replace('/home');
         } else {
-            alert('Failed to create character');
+            // alert('Failed to create character');
+            var message = 'Failed to create character.';
+            $('#alertModal').find('.modal-body p').text(message);
+            $('#alertModal').modal('show');
         }
     } else {
-        alert('Please enter a name for your character.');
+        // alert('Please enter a name for your character.');
+        var message = 'Please enter a name for your character.';
+        $('#alertModal').find('.modal-body p').text(message);
+        $('#alertModal').modal('show');
     }
 };
 

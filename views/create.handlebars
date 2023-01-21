@@ -14,7 +14,25 @@
         <input class="form-input" type="text" id="character-name" name="character-name"/>
         <button type="submit">CREATE</button>
     </form>
-</div>
 
+    {{!-- Modal for alerts --}}
+    <div id="alertModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Character</h5>
+                    <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="../../js/create.js"></script>
