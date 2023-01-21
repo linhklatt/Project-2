@@ -31,7 +31,7 @@ router.get('/home', withAuth, async (req, res) => {
   }
 });
 
-router.get('/characters', async(req, res) => {
+router.get('/leaderboard', async(req, res) => {
   try {
     const characterData = await Character.findAll({
       include: [
@@ -44,7 +44,7 @@ router.get('/characters', async(req, res) => {
 
     const characters = characterData.map((character) => character.get({ plain: true }));
 
-    res.render('characters', {
+    res.render('leaderboard', {
       characters,
       logged_in: req.session.logged_in
     });

@@ -18,6 +18,18 @@ Character.init(
     role: {
       type: DataTypes.STRING,
     },
+    health: {
+      type: DataTypes.INTEGER,
+      defaultValue: 100,
+    },
+    attack: {
+      type: DataTypes.INTEGER,
+      defaultValue: 15,
+    },
+    counter: {
+      type: DataTypes.INTEGER,
+      defaultValue: 10,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
