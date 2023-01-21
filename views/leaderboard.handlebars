@@ -1,5 +1,5 @@
 <div class="leaderboard">
-  <h2>All Users</h2>
+  <h2>All Characters</h2>
   <div class="leaderboard-row" id="leaderboard-col-head">
     <div class="lb-col">
       <p>ROLE</p>
@@ -17,7 +17,7 @@
   {{#each characters as |character| }}
   <div class="leaderboard-row">
     <div class="lb-col">
-      {{{get_sprite character.role}}}
+      <div class="lb-img {{{get_static_right character.role}}}"></div>
     </div>
     <div class="lb-col">
       <p>{{character.name}}</p>

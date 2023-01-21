@@ -1,59 +1,33 @@
-<div class="userhome-container">
-  <div class="row">
-    <div class="col-auto">
-      <h2>Welcome, {{username}}!</h2>
-    </div>
-  </div>
-
+<section class="user-home">
+  <h2>Welcome, {{username}}!</h2>
+  
   {{#if characters.length}}
-  <div class="player-character-list">
-    {{#each characters as |character|}}
-      <div class="player-character-tile">
-        <div class="player-character" id="player-character-{{character.id}}">
-          <p char-id={{character.id}}>
-            <span img-id="img-{{character.id}}">{{{get_sprite character.role}}}</span>
-            {{character.name}}
-            {{character.role}}
-          </p>
+    <section class="user-home-char-list">
+      {{#each characters as |character| }}
+      <div class="user-home-char-row" char-id="{{character.id}}">
+        <div class="user-home-char-col">
+          <div class="user-home-char-img {{{get_static_right character.role}}}"></div>
+        </div>
+        <div class="user-home-char-col">
+          <p>{{character.name}}</p>
+        </div>
+        <div class="user-home-char-col">
+          <ul>
+            <li>hp: {{character.health}}</li>
+            <li>atk: {{character.attack}}</li>
+            <li>ctr: {{character.counter}}</li>
+          </ul>
         </div>
       </div>
-    {{/each}}
-  </div>
+      {{/each}}
+    </section>
   {{/if}}
 
-  <div id="btn">
-    <div class="create-character">
-      <button>CREATE A CHARACTER</button>
-    </div>
-    <div class="play-game">
-      <button id="play-btn">PLAY</button>
-    </div>
-    <div class="delete-character">
-      <button id="delete-btn">DELETE</button>
-    </div>
-  </div>
-
-  {{!-- Modal for alerting not selecting a character --}}
-    <div id="confirmModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Character Select</h5>
-                  <button class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="c-modal-body">
-                <p></p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger" data-dismiss="modal" id="confirm-delete">
-                  Ok
-                </button>
-                <button class="btn btn-secondary" data-dismiss="modal" id="cancel">
-                  Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+  <section class="user-home-btns">
+    <button id="create-character">CREATE A CHARACTER</button>
+    <button id="play" disabled="true">PLAY</button>
+    <button id="delete-character" disabled="true">DELETE</button>
+  </section>
+</section>
 
 <script src="./js/userhome.js"></script>

@@ -1,3 +1,4 @@
+/* -------------------------- Home Page Styles --------------------------*/
 .homepage-render {
   background-color: bisque;
   display: flex;
@@ -70,33 +71,146 @@
   width: 25%;
 }
 
+.lb-img {
+  width: 64px;
+  height: 64px;
+}
+
 .lb-col ul,
 .lb-col p {
   margin: 0px;
 }
+
+/* -------------------------- User Home Styles --------------------------*/
+.user-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+}
+
+.user-home-char-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.user-home-char-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: darkgrey;
+  width: 100%;
+}
+
+.user-home-char-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-home-char-img {
+  width: 64px;
+  height: 64px;
+}
+
+.user-home-char-col ul,
+.user-home-char-col p {
+  margin: 0px;
+}
+
+.user-home-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.selected {
+  border-color: black;
+}
+
 /* -------------------------- Create Page Styles --------------------------*/
-.create-character-container {
+.create-character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+}
+
+.create-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.create-tile {
+  width: 192px;
+  height: 192px;
+  background-color: whitesmoke;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-style: solid;
+  border-color: darkgrey;
+}
+
+.selected-role {
+  border-color: black;
+}
+
+.create-description {
+
+}
+
+.create-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+}
+
+/* -------------------------- End Page Styles --------------------------*/
+.end-player {
+  height: 192px;
+  width: 192px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 75%;
+}
+
+/* .create-character-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0px;
-}
+} */
 
-.character-tile {
+/* .character-tile {
   display: flex;
   flex-direction: row;
-}
+} */
 
-.class-btn {
+/* .class-btn {
   padding: 0px;
   margin: 8px;
   width: 192px;
   height: 192px;
   background-size: 100%;
   border-width: 2px;
-}
+} */
 
-.warr-btn { background-image: url("../images/warr-static-right.png"); }
+/* .warr-btn { background-image: url("../images/warr-static-right.png"); }
 .arch-btn { background-image: url("../images/archer-standing.png"); }
 .mage-btn { background-image: url("../images/mage-static-right.png"); }
 
@@ -112,10 +226,10 @@
 .class-btn:focus { border-width: 4px; }
 .warr-btn:focus { background-image: url("../images/warr-walk-right.gif"); }
 .arch-btn:focus { background-image: url("../images/archer-shoot-right.gif"); }
-.mage-btn:focus { background-image: url("../images/mage-walk-right.gif"); }
+.mage-btn:focus { background-image: url("../images/mage-walk-right.gif"); } */
 
-/* userhome styles */
-.userhome-container {
+/* -------------------------- !OLD User Home Styles --------------------------*/
+/* .userhome-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -156,7 +270,7 @@
 
 .selected-character {
   border-color: black;
-}
+} */
 
 .new-character-form {
   display: flex;
@@ -249,8 +363,12 @@ button {
   background-position: center;
 }
 
-.warr-walk-right { background-image: url("../images/warr-walk-right.gif"); }
-.arch-walk-right { background-image: url("../images/archer-attack-2x.gif"); }
+.warrior-static-right { background-image: url("../images/warr-static-right.png"); }
+.archer-static-right { background-image: url("../images/arch-static-right.png"); }
+.mage-static-right { background-image: url("../images/mage-static-right.png"); }
+
+.warrior-walk-right { background-image: url("../images/warr-walk-right.gif"); }
+.archer-walk-right { background-image: url("../images/archer-shoot-right.gif"); }
 .mage-walk-right { background-image: url("../images/mage-walk-right.gif"); }
 
 .warr-attack-right {
