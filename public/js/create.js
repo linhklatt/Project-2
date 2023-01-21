@@ -105,7 +105,12 @@ finishBtn.on('click', async (event) => {
         $('#mainModal').find('.btn-primary').hide();
         $('#mainModal').modal('show');
     } else {
-        alert('failed to create character');
+        let title = 'No Name Found';
+        let message = 'Please enter a name for your character.';
+        $('#mainModal').find('.modal-title').text(title);
+        $('#mainModal').find('.modal-body p').text(message);
+        $('#mainModal').find('.btn-primary').hide();
+        $('#mainModal').modal('show');
     }
 });
 
