@@ -32,10 +32,10 @@ function getCharacter(characterKey) {
 function walkRight(element, role) {
     switch(role) {
         case 'warrior':
-                $(element).addClass("warr-walk-right");
+                $(element).addClass("warrior-walk-right");
                 break;
             case 'archer':
-                // element.addClass("arch-walk-right"); 
+                element.addClass("archer-walk-right"); 
                 break;
             case 'mage':
                 $(element).addClass("mage-walk-right"); 

@@ -1,38 +1,23 @@
-<div class="create-character-container">
-    <div class="character-tile">
-        <button class="class-btn warr-btn" role="warrior"></button>
-        <button class="class-btn arch-btn" role="archer"></button>
-        <button class="class-btn mage-btn" role="mage"></button>
-    </div>
-
-    <div class="character-description">
+<section class="create-character">
+    <section class="create-select">
+        <div class="create-tile {{{get_static_right 'warrior'}}}" role="warrior"></div>
+        <div class="create-tile {{{get_static_right 'archer'}}}" role="archer"></div>
+        <div class="create-tile {{{get_static_right 'mage'}}}" role="mage"></div>
+    </section>
+    <section class="create-description">
         <p>Select your desired role.</p>
-    </div>
-
-    <form class="form new-character-form" hidden>
+    </section>
+    <form class="name-form" hidden="true">
         <p>NAME YOUR CHARACTER</p>
-        <input class="form-input" type="text" id="character-name" name="character-name"/>
-        <button type="submit">CREATE</button>
+        <input class="form-input" type="text" id="character-name"/>
     </form>
+    <section class="create-btns">
+        <button id="create-back">GO BACK</button>
+        <button id="create-finish" disabled="true">FINISH</button>
+    </section>
+</section>
 
-    {{!-- Modal for alerts --}}
-    <div id="alertModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create Character</h5>
-                    <button class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p></p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+{{!-- Modal for alerts --}}
+
 
 <script src="../../js/create.js"></script>
