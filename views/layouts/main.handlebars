@@ -12,8 +12,8 @@
 
 <body>
   <div class="flex-column justify-center">
-    <header class="display-flex justify-space-between align-center p-2">
-      <nav class="navbar navbar-expand-lg navbar-dark rounded" style="background-color: #182c25">
+    <header class="display-flex justify-space-between align-center">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000">
         <a class="navbar-brand" style="color: bisque; font-size: 42px; font-weight: bold" href="/">
           DB FighterZ
         </a>
@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="dark-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/characters">Leaderboard</a>
+              <a class="nav-link" href="/leaderboard">Leaderboard</a>
             </li>
             {{#if logged_in}}
             <li class="nav-item">
@@ -47,6 +47,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
     <main class="container container-fluid mt-5">
+    <main class="container p-0" style="background-color: lightgrey">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
