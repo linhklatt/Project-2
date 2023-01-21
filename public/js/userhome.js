@@ -37,51 +37,54 @@ const characterSelectHandler = async (event) => {
     }
 };
 
-const deleteButtonHandler = async(event) => {
+
+const deleteButtonHandler = (event) => {
     event.preventDefault();
 
     const id = localStorage.getItem("selectedCharId");
 
     if (id) {
-        if (confirm('Are you sure you want to delete this character?')) {
-            const response = await fetch(`/api/characters/${id}`, {
-                method: 'DELETE',
-            });
+    //     if (confirm('Are you sure you want to delete this character?')) {
+    //         const response = await fetch(`/api/characters/${id}`, {
+    //             method: 'DELETE',
+    //         });
     
-            if (response.ok) {
-                document.location.replace('/home');
-            } else {
-                alert('Failed to delete character.');
-            }
-        }
-    } else {
-        alert('Please select a character to delete.');
-    //     var message = 'Are you sure you want to delete this character?';
-    //     $('confirmModal').find('.c-modal-body p').text(message);
-    //     $('confirmModal').modal('show');
+    //         if (response.ok) {
+    //             document.location.replace('/home');
+    //         } else {
+    //             alert('Failed to delete character.');
+    //         }
+    //     }
     // } else {
-    //     var message = 'Please select a character to delete.'
-    //     $('alertModal').find('.modal-body p').text(message);
-    //     $('alertModal').modal('show');
+    //     alert('Please select a character to delete.');
+        var message = 'Are you sure you want to delete this character?';
+        $('#confirmModal').find('.c-modal-body p').text(message);
+        $('#confirmModal').modal('show');
+    } else {
+        var message = 'Please select a character to delete.'
+        $('#confirmModal').find('.c-modal-body p').text(message);
+        $('#confirm-delete').hide();
+        $('#confirmModal').modal('show');
     // }
 }};
 
-// const confirmDeleteButton = document.getElementById('confirm-delete')
-// confirmDeleteButton.addEventListener('click', async(event) => {
-//     event.preventDefault();
+const confirmDeleteButton = document.getElementById('confirm-delete')
+confirmDeleteButton.addEventListener('click', async(event) => {
+    event.preventDefault();
 
-//     const id = localStorage.getItem("selectedCharId");
-//     const response = await fetch(`/api/characters/${id}`, {
-//         method: 'DELETE',
-//     });
-//     if (response.ok) {
-//         document.location.replace('/home');
-//     } else {
-//         var message = 'Failed to delete character.'
-//         $('alertModal').find('.modal-body p').text(message);
-//         $('alertModal').modal('show');
-//     }
-// });
+    const id = localStorage.getItem("selectedCharId");
+    const response = await fetch(`/api/characters/${id}`, {
+        method: 'DELETE',
+    });
+    if (response.ok) {
+        document.location.replace('/home');
+    } else {
+        var message = 'Failed to delete character. Please close and select a character.'
+        $('#confirmModal').find('.c-modal-body p').text(message);
+        $('#confirm-delete').hide();
+        $('#confirmModal').modal('show');
+    }
+});
 
 const playButtonHandler = async (event) => {
     event.preventDefault();
@@ -110,8 +113,12 @@ const playButtonHandler = async (event) => {
             alert(response.statusText)
         }
     } else {
-        alert('Please select a character first.');
-    } 
+        // alert('Please select a character first.');
+        var message = 'Please select a character.'
+        $('#confirmModal').find('.c-modal-body p').text(message);
+        $('#confirm-delete').hide();
+        $('#confirmModal').modal('show');
+    }
 };
 
 async function getCharacterData(id) {
