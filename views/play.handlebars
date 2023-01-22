@@ -1,41 +1,46 @@
 <div class="play-container">
-
-
-<div class="row">
-  <div class="col-auto">
-    <h2>Prepare to fight!</h2>
-  </div>
-</div>
-
-<div class="character-container">
-  <div class="playscreen-player" id="player"></div>
-  <div class="playscreen-opponent" id="opponent"></div>
-  <div class="waitlist"></div>
-</div>
-
-<div class="row mb-4">
-    <div class="col-md-5">
-      {{!-- These are the buttons used to control your character. --}}
-      <div>
-        <button class="btn btn-small" id="attack" onClick="fight(id)">ATTACK</button>
-        <button class="btn btn-small" id="counter" onClick="fight(id)">COUNTER</button>
-      </div>
-        
-      {{!-- These will display your HP, enemy HP, and a health bar for each character. --}}
-      <div id="healthContainer">
-        <div id="yourHP">
-          <div id="yourHealthBar"></div>
-        </div>
-        <div id="enemyHP">
-          <div id="enemyHealthBar"></div>
-        </div>
-      </div>
-      {{!-- This will display the actions that are being committed. --}}
-      <div id="announcements"></div>
-      <div class="btn btn-small" id="end-game" style="display: none">END</div>
+  <div class="row">
+    <div class="col-auto">
+      <h2>Prepare to fight!</h2>
     </div>
+  </div>
+
+  <div class="info-container">
+    <div class="health-bars-container">
+      <div class ="health-bar"id="yourHP">
+        <div id="yourHealthBar"></div>
+      </div>
+      <div class="turn-counter">00</div>
+      <div class ="health-bar" id="enemyHP">
+        <div id="enemyHealthBar"></div>
+      </div>
+    </div>
+    <div class="name-container">
+      <p class="player-name"></p>
+      <p class="opponent-name"></p>
+    </div>
+  </div>
+
+  <div class="character-container">
+    <div class="player">
+      <div class="character-model player-model"></div>
+    </div>
+
+    <div class="opponent">
+      <div class="character-model opponent-model"></div>
+    </div> 
+  </div>
+
+  <div class="play-buttons">
+    {{!-- These are the buttons used to control your character. --}}
+    <button class="btn btn-small" id="attack" onClick="fight(id)">ATTACK</button>
+    <button class="btn btn-small" id="counter" onClick="fight(id)">COUNTER</button>
+  </div>
+
+  {{!-- This will display the actions that are being committed. --}}
+  <div id="announcements"></div>
+
+  <div class="btn btn-small" id="end-game" style="display: none">END</div>
 </div>
 
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="../../js/play.js"></script>

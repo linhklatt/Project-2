@@ -189,89 +189,6 @@
   background-size: 75%;
 }
 
-/* .create-character-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px;
-} */
-
-/* .character-tile {
-  display: flex;
-  flex-direction: row;
-} */
-
-/* .class-btn {
-  padding: 0px;
-  margin: 8px;
-  width: 192px;
-  height: 192px;
-  background-size: 100%;
-  border-width: 2px;
-} */
-
-/* .warr-btn { background-image: url("../images/warr-static-right.png"); }
-.arch-btn { background-image: url("../images/archer-standing.png"); }
-.mage-btn { background-image: url("../images/mage-static-right.png"); }
-
-.class-btn:focus { border-width: 4px; }
-.warr-btn:focus { background-image: url("../images/warr-walk-right.gif"); }
-.arch-btn:focus { background-image: url("../images/archer-attack-2x.gif"); }
-.mage-btn:focus { background-image: url("../images/mage-walk-right.gif"); }
-
-.warr-btn { background-image: url("../images/warr-static-right.png"); }
-.arch-btn { background-image: url("../images/archer-static-right.png"); }
-.mage-btn { background-image: url("../images/mage-static-right.png"); }
-
-.class-btn:focus { border-width: 4px; }
-.warr-btn:focus { background-image: url("../images/warr-walk-right.gif"); }
-.arch-btn:focus { background-image: url("../images/archer-shoot-right.gif"); }
-.mage-btn:focus { background-image: url("../images/mage-walk-right.gif"); } */
-
-/* -------------------------- !OLD User Home Styles --------------------------*/
-/* .userhome-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.player-character-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.player-character-list p {
-    margin: 0;
-    padding: 8px;
-}
-
-.player-character {
-  border-color: #e6e6e6;
-  border-style: solid;
-  text-decoration: none;
-  color: black;
-}
-.player-character:link {
-  text-decoration: none;
-}
-.player-character:active {
-  text-decoration: none;
-}
-.player-character:visited {
-  text-decoration: none;
-}
-.player-character:hover {
-  text-decoration: none;
-  color: black;
-}
-
-.selected-character {
-  border-color: black;
-} */
-
 .new-character-form {
   display: flex;
   flex-direction: column;
@@ -291,10 +208,60 @@
   }
 }
 
-/* for /play page */
-#healthContainer {
-  width: 100%;
+/* -------------------------- Play Page Styles --------------------------*/
+.play-container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+}
+
+.player, .opponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-name {
+  display: block;
+}
+
+.character-model {
+  height: 128px;
+  width: 128px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.opponent-model {
+  transform: scaleX(-1);
+}
+
+.health-bars-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.name-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.player-name {
+  padding-left: 16px;
+}
+
+.opponent-name {
+  padding-right: 16px;
 }
 
 button {
@@ -311,7 +278,6 @@ button {
   width: 250px;
   border: black 3px solid;
   border-radius: 3px;
-  margin-right: 20px;
   display: inline-block;
 }
 
@@ -322,12 +288,17 @@ button {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: lightgreen;
+  background-color: rgb(83, 238, 83);
+}
+
+.play-buttons {
+  display: flex;
+  flex-direction: row;
 }
 
 #announcements {
   border: black 2px solid;
-  background-color: lightgrey;
+  background-color: whitesmoke;
 }
 
 #announcements span {
@@ -341,16 +312,12 @@ button {
   gap: 15px;
 }
 
-.character-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+
 
 .playscreen-player {
   height: 192px;
   width: 192px;
-  background-color: lightcoral;
+  background-color: greenyellow;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -358,85 +325,12 @@ button {
 .playscreen-opponent {
   height: 192px;
   width: 192px;
-  background-color: aquamarine;
+  background-color: rgb(168, 114, 32);
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.warrior-static-right { background-image: url("../images/warr-static-right.png"); }
-.archer-static-right { background-image: url("../images/arch-static-right.png"); }
-.mage-static-right { background-image: url("../images/mage-static-right.png"); }
-
-.warrior-walk-right { background-image: url("../images/warr-walk-right.gif"); }
-.archer-walk-right { background-image: url("../images/archer-shoot-right.gif"); }
-.mage-walk-right { background-image: url("../images/mage-walk-right.gif"); }
-
-.warr-attack-right {
-  background-image: url("../images/warr-attack-right.gif");
-  background-size: 100%;
-}
-
-.shake-horizontal {
-	-webkit-animation: shake-horizontal 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: shake-horizontal 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
-@-webkit-keyframes shake-horizontal {
-  0%,
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-  10%,
-  30%,
-  50%,
-  70% {
-    -webkit-transform: translateX(-10px);
-            transform: translateX(-10px);
-  }
-  20%,
-  40%,
-  60% {
-    -webkit-transform: translateX(10px);
-            transform: translateX(10px);
-  }
-  80% {
-    -webkit-transform: translateX(8px);
-            transform: translateX(8px);
-  }
-  90% {
-    -webkit-transform: translateX(-8px);
-            transform: translateX(-8px);
-  }
-}
-@keyframes shake-horizontal {
-  0%,
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-  10%,
-  30%,
-  50%,
-  70% {
-    -webkit-transform: translateX(-10px);
-            transform: translateX(-10px);
-  }
-  20%,
-  40%,
-  60% {
-    -webkit-transform: translateX(10px);
-            transform: translateX(10px);
-  }
-  80% {
-    -webkit-transform: translateX(8px);
-            transform: translateX(8px);
-  }
-  90% {
-    -webkit-transform: translateX(-8px);
-            transform: translateX(-8px);
-  }
-}
-
+/* -------------------------- End Page Styles --------------------------*/
 .end-container {
   display: flex;
   flex-direction: column;
@@ -460,3 +354,90 @@ button {
 #return-home {
     background-color: #fbeee0;
 }
+
+/* -------------------------- Character Model Styles --------------------------*/
+
+.warrior-static-right { background-image: url("../images/warr-static-right.png"); }
+.archer-static-right { background-image: url("../images/arch-static-right.png"); }
+.mage-static-right { background-image: url("../images/mage-static-right.png"); }
+
+.warrior-walk-right { background-image: url("../images/warr-walk-right.gif"); }
+.archer-walk-right { background-image: url("../images/archer-walk-right.gif"); }
+.mage-walk-right { background-image: url("../images/mage-walk-right.gif"); }
+
+.test-left { 
+    background-image: url("../images/warr-static-right.png"); 
+  }
+
+.warrior-attack-right {
+  background-image: url("../images/warrior-attack-right.gif");
+}
+.archer-attack-right {
+  background-image: url("../images/archer-attack-right.gif");
+}
+.mage-attack-right {
+  background-image: url("../images/mage-attack-right.gif");
+}
+
+/* -------------------------- CSS Keyframes --------------------------*/
+.shake-horizontal {
+	-webkit-animation: shake-horizontal 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: shake-horizontal 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+@-webkit-keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+            transform: scaleX(-1) translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-10px);
+            transform: scaleX(-1) translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: scaleX(-1) translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+            transform: scaleX(-1) translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+            transform: scaleX(-1) translateX(-8px);
+  }
+}
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+            transform: scaleX(-1) translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-10px);
+            transform: scaleX(-1) translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: scaleX(-1) translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+            transform: scaleX(-1) translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+            transform: scaleX(-1) translateX(-8px);
+  }
+}
+

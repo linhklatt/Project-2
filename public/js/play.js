@@ -11,13 +11,14 @@ let totalRounds = 0;
 let res;
 const attackButton = document.getElementById('attack');
 const counterButton = document.getElementById('counter');
-// const yourHPEl = document.getElementById('yourHP');
 const yourHealthBar = document.getElementById('yourHealthBar');
-// const enemyHPEl = document.getElementById('enemyHP');
 const enemyHealthBar = document.getElementById('enemyHealthBar');
 const announcements = document.getElementById('announcements');
-const playerModel = $('#player');
-const opponentModel = $('#opponent');
+
+const playerModel = $('.player-model');
+const playerName = $('.player-name');
+const opponentModel = $('.opponent-model');
+const opponentName = $('.opponent-name');
 const endButton = $('#end-game');
 
 // Pull character data from local storage
@@ -28,8 +29,8 @@ const opponent3 = getCharacter("oppponentData3");
 const opponent4 = getCharacter("opponentData4");
 
 function init() {
-    playerModel.append(`<p>${player.name}</p>`);
-    opponentModel.append(`<p>${opponent1.name}</p>`);
+    playerName.text(player.name);
+    opponentName.text(opponent1.name);
     walkRight(playerModel, player.role);
     walkRight(opponentModel, opponent1.role);
     enableButtons();
@@ -44,14 +45,42 @@ function getCharacter(characterKey) {
 function walkRight(element, role) {
     switch(role) {
         case 'warrior':
-                $(element).addClass("warr-walk-right");
-                break;
-            case 'archer':
-                // element.addClass("arch-walk-right"); 
-                break;
-            case 'mage':
-                $(element).addClass("mage-walk-right"); 
-                break;
+            $(element).addClass("warrior-walk-right");
+            break;
+        case 'archer':
+            element.addClass("archer-walk-right"); 
+            break;
+        case 'mage':
+            $(element).addClass("mage-walk-right"); 
+            break;
+    }
+}
+
+function attackRight(element, role) {
+    switch(role) {
+        case 'warrior':
+            $(element).addClass("warrior-attack-right");
+            break;
+        case 'archer':
+            element.addClass("archer-attack-right"); 
+            break;
+        case 'mage':
+            $(element).addClass("mage-attack-right"); 
+            break;
+    }
+}
+
+function stopAttackRight(element, role) {
+    switch(role) {
+        case 'warrior':
+            $(element).removeClass("warrior-attack-right");
+            break;
+        case 'archer':
+            element.removeClass("archer-attack-right"); 
+            break;
+        case 'mage':
+            $(element).removeClass("mage-attack-right"); 
+            break;
     }
 }
 
@@ -76,17 +105,21 @@ fight = async (id) => {
 attackAnimation = async () => {
     disableButtons();
     let attackTime = 1200;
+    let shakeTime = 400;
     let delay = 200;
-    let animationTimer = attackTime;
+    let animationTimer = attackTime + shakeTime;
 
-    playerModel.addClass("warr-attack-right");
+    attackRight(playerModel, player.role);
     opponentModel.removeClass("shake-horizontal")
     let timerInterval = setInterval(function() {
         animationTimer -= delay;
-        if (animationTimer == 0) {
-            playerModel.removeClass("warr-attack-right");
+        if (animationTimer == shakeTime) {
+            stopAttackRight(playerModel, player.role);
             opponentModel.addClass("shake-horizontal");
+        }
+        if (animationTimer == 0) {
             clearInterval(timerInterval);
+            opponentModel.removeClass("shake-horizontal");
             enableButtons();
         }
     }, delay);
