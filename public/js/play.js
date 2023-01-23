@@ -78,6 +78,7 @@ counterButton.on('click', async() => {
 
 async function newTurn() {
     disableButtons();
+    announcements.text("");
     await addRound();
     await enemyMove(yourMove);
     
@@ -92,9 +93,9 @@ async function addRound () {
 // Takes the moves of the player and generates one for the enemy then runs the damage step
 async function enemyMove (id) {
     let move = Math.floor((Math.random()*4) + 1);
-    if (move <= 3) {    // 3/4 are attack
+    if (move <= 2) {    // 1 and 2 are attack
         savedEnemyMove = 'attack';
-    } else {            // 1/2 are counter
+    } else {            // 3 and 4 are counter
         savedEnemyMove = 'counter';
     };
     
@@ -108,21 +109,22 @@ async function damageStep (y, e) {
     console.log(`y: ${y}, e: ${e}`);
     if (y === 'attack' && e === 'attack') {
         res = "Both players take damage!";
-        attackAnimation(opponentModel, opponent1.role, playerModel, player.role, 'player', 'yes');
-        attackAnimation(playerModel, player.role, opponentModel, opponent1.role, 'opponent', 'yes');
-        console.log(`Pre-attack: You: ${yourHP} Enemey: ${enemyHP}`);
         enemyHP -= yourATK;
         yourHP -= enemyATK;
-        console.log(`Post-attack: You: ${yourHP} Enemey: ${enemyHP}`);
+
         if (enemyHP <= 0) enemyHP = 0;
         if (yourHP <= 0) yourHP = 0;
-        console.log(`Post-check: You: ${yourHP} Enemey: ${enemyHP}`);
+
+        attackAnimation(opponentModel, opponent1.role, playerModel, player.role, 'player', 'yes');
+        attackAnimation(playerModel, player.role, opponentModel, opponent1.role, 'opponent', 'yes');
+
     } else if (y === 'counter' && e === 'counter') {
         res = "Defensive stances taken in vain!";
+
         counterAnimation(playerModel, player.role);
         counterAnimation(opponentModel, opponent1.role);
         doubleCounter(playerModel, player.role, opponentModel, opponent1.role);
-
+        
     } else if (y === 'attack' && e === 'counter') {
         res = "Enemy takes a defensive stance and prepares to counter.";
         
@@ -141,24 +143,30 @@ async function counter (y, e) {
     let move = Math.floor((Math.random()*5));
     if (move >= 3 && y === 'attack') {
         res = "Enemy's counter was successful!"
+        yourHP -= enemyCTR;
+
         counterAnimation(opponentModel, opponent1.role);
         await attackAnimation(opponentModel, opponent1.role, playerModel, player.role, 'player', 'yes');
 
-        yourHP -= enemyCTR;
+        
 
     } else if (move >= 3 && y === 'counter') {
         res = "Your counter was successful!"
-         counterAnimation(playerModel, player.role);
+        enemyHP -= yourCTR;
+
+        counterAnimation(playerModel, player.role);
         await attackAnimation(playerModel, player.role, opponentModel, opponent1.role, 'opponent', 'yes');
 
-        enemyHP -= yourCTR;
+        
 
     } else if (move < 3 && y === 'attack') {
         res = "Enemy counter failed!";
+        enemyHP -= yourATK;
+
         counterAnimation(opponentModel, opponent1.role);
         await attackAnimation(playerModel, player.role, opponentModel, opponent1.role, 'opponent', 'yes');
 
-        enemyHP -= yourATK;
+        
 
     } else if (move < 3 && y === 'counter') {
         res = "Your counter was not successful!"
@@ -168,6 +176,9 @@ async function counter (y, e) {
         await attackAnimation(opponentModel, opponent1.role, playerModel, player.role, 'player', 'yes');
         
     }
+
+    if (enemyHP <= 0) enemyHP = 0;
+    if (yourHP <= 0) yourHP = 0;
 };
 
 // Displays results of the round
@@ -184,7 +195,7 @@ async function healthChange () {
 };
 
 async function turnEnd () {
-    healthChange();
+    
     if (yourHP > 0 && enemyHP > 0) {
         enableButtons();
     } else if (yourHP === 0) {
@@ -200,6 +211,7 @@ async function turnEnd () {
         endButton.show();
         endButton.on('click', endButtonHandler);
     }
+    healthChange();
     roundResults(res);
     
 };
@@ -216,17 +228,18 @@ async function attackAnimation (attackerModel, attackerRole, defenderModel, defe
         if (animationTimer == 0) {
             clearInterval(timerInterval);
             stopAttackRight(attackerModel, attackerRole);
-            if (damage) {
-                damageAnimation(defenderModel, defender, defenderRole);
+            if (damage == 'yes') {
+                damageAnimation(defenderModel, defender, defenderRole, attackerModel, attackerRole);
             } else {
                 defenderModel.removeClass(`${defenderRole}-counter-right`);
+                attackerModel.removeClass(`${attackerRole}-counter-right`);
                 turnEnd();
             }
         }
     }, delay); 
 }
 
-function damageAnimation (defenderModel, defender, defenderRole) {
+function damageAnimation (defenderModel, defender, defenderRole, attackerModel, attackerRole) {
     const shakeTime = 400;
     const delay = 200;
     let animationTimer = shakeTime;
@@ -239,6 +252,7 @@ function damageAnimation (defenderModel, defender, defenderRole) {
             clearInterval(timerInterval);
             defenderModel.removeClass(`${defender}-shake`);
             defenderModel.removeClass(`${defenderRole}-counter-right`);
+            attackerModel.removeClass(`${attackerRole}-counter-right`);
             turnEnd();
         }
     }, delay);
@@ -256,6 +270,7 @@ function doubleCounter( playerModel, playerRole, opponentModel, opponentRole) {
             playerModel.removeClass(`${playerRole}-counter-right`);
             opponentModel.removeClass(`${opponentRole}-counter-right`);
             enableButtons();
+            turnEnd();
         }
     }, delay);
 }
