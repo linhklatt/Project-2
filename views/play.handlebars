@@ -10,7 +10,7 @@
       <div class ="health-bar"id="yourHP">
         <div id="yourHealthBar"></div>
       </div>
-      <div class="turn-counter">00</div>
+      <div class="turn-counter">Turn 0</div>
       <div class ="health-bar" id="enemyHP">
         <div id="enemyHealthBar"></div>
       </div>
@@ -23,24 +23,26 @@
 
   <div class="character-container">
     <div class="player">
-      <div class="character-model player-model"></div>
+      <div class="player-model"></div>
     </div>
 
     <div class="opponent">
-      <div class="character-model opponent-model"></div>
+      <div class="opponent-model"></div>
     </div> 
   </div>
 
   <div class="play-buttons">
     {{!-- These are the buttons used to control your character. --}}
-    <button class="btn btn-small" id="attack" onClick="fight(id)">ATTACK</button>
-    <button class="btn btn-small" id="counter" onClick="fight(id)">COUNTER</button>
+    <button class="btn btn-small" id="attack">ATTACK</button>
+    <button class="btn btn-small" id="counter">COUNTER</button>
+    
+    
   </div>
 
   {{!-- This will display the actions that are being committed. --}}
-  <div id="announcements"></div>
+  <div><p id="announcements"></p></div>
 
   <div class="btn btn-small" id="end-game" style="display: none">END</div>
 </div>
 
-<script src="../../js/play.js"></script>
+<script src="../../js/play.js" type="module"></script>
