@@ -13,6 +13,9 @@
     <div class="lb-col">
       <p>STATS</p>
     </div>
+    <div class="lb-col">
+      <p>WINS</p>
+    </div>
   </div>
   {{#each characters as |character| }}
   <div class="leaderboard-row">
@@ -31,6 +34,9 @@
         <li>atk: {{character.attack}}</li>
         <li>ctr: {{character.counter}}</li>
       </ul>
+    </div>
+    <div class="lb-col">
+      <p>{{character.wins}}</p>
     </div>
   </div>
   {{/each}}

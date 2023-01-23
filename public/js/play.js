@@ -199,7 +199,7 @@ async function turnEnd () {
     if (yourHP > 0 && enemyHP > 0) {
         enableButtons();
     } else if (yourHP === 0) {
-        let gameOver = "Game Over! You lossed.";
+        let gameOver = "Game Over! You lost.";
         gameOverEl.text(gameOver);
         gameOverEl.show();
         endButton.show();
@@ -210,6 +210,7 @@ async function turnEnd () {
         gameOverEl.show();
         endButton.show();
         endButton.on('click', endButtonHandler);
+        localStorage.setItem("playerWin", "true");
     }
     healthChange();
     roundResults(res);
@@ -289,4 +290,5 @@ const endButtonHandler = async (event) => {
     }
 };
 
+localStorage.setItem("playerWin", "false");
 init();

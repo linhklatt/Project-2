@@ -40,6 +40,9 @@ router.get('/leaderboard', async(req, res) => {
           attributes: ['username'],
         },
       ],
+      order: [
+        ['wins', 'DESC'],
+      ],
     });
 
     const characters = characterData.map((character) => character.get({ plain: true }));
