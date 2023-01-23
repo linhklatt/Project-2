@@ -1,3 +1,5 @@
+import { walkRight, attackRight, stopAttackRight, counterAnimation } from "./animations/playAnimations.js";
+
 let yourMove;
 let enemyMove;
 let savedEnemyMove;
@@ -9,12 +11,12 @@ let totalRounds = 0;
 
 // Setting up document
 let res;
-const attackButton = document.getElementById('attack');
-const counterButton = document.getElementById('counter');
-const yourHealthBar = document.getElementById('yourHealthBar');
-const enemyHealthBar = document.getElementById('enemyHealthBar');
-const announcements = document.getElementById('announcements');
-
+const attackButton = $('#attack');
+const counterButton = $('#counter');
+const yourHealthBar = $('#yourHealthBar');
+const enemyHealthBar = $('#enemyHealthBar');
+const announcements = $('#announcements');
+const turnCounter = $('.turn-counter');
 const playerModel = $('.player-model');
 const playerName = $('.player-name');
 const opponentModel = $('.opponent-model');
@@ -42,120 +44,205 @@ function getCharacter(characterKey) {
     return character;
 }
 
-function walkRight(element, role) {
-    switch(role) {
-        case 'warrior':
-            $(element).addClass("warrior-walk-right");
-            break;
-        case 'archer':
-            element.addClass("archer-walk-right"); 
-            break;
-        case 'mage':
-            $(element).addClass("mage-walk-right"); 
-            break;
-    }
-}
-
-function attackRight(element, role) {
-    switch(role) {
-        case 'warrior':
-            $(element).addClass("warrior-attack-right");
-            break;
-        case 'archer':
-            element.addClass("archer-attack-right"); 
-            break;
-        case 'mage':
-            $(element).addClass("mage-attack-right"); 
-            break;
-    }
-}
-
-function stopAttackRight(element, role) {
-    switch(role) {
-        case 'warrior':
-            $(element).removeClass("warrior-attack-right");
-            break;
-        case 'archer':
-            element.removeClass("archer-attack-right"); 
-            break;
-        case 'mage':
-            $(element).removeClass("mage-attack-right"); 
-            break;
-    }
-}
-
-enableButtons = () => {
-    attackButton.disabled = false;
-    counterButton.disabled = false;
+const enableButtons = () => {
+    attackButton.prop("disabled", false);
+    counterButton.prop("disabled", false);
 };
 
-disableButtons = () => {
-    attackButton.disabled = true;
-    counterButton.disabled = true;
+const disableButtons = () => {
+    attackButton.prop("disabled", true);
+    counterButton.prop("disabled", true);
 };
 
-fight = async (id) => {
-    await attackAnimation();
-    await addRound();
-    await enemyMove(id);
-    await healthChange();
-    await gameOver();
-};
+attackButton.on('click', async () => {
+    yourMove = 'attack';
+    newTurn();
+});
 
-attackAnimation = async () => {
+counterButton.on('click', async() => {
+    yourMove = 'counter';
+    newTurn();
+});
+
+function newTurn() {
     disableButtons();
-    let attackTime = 1200;
-    let shakeTime = 400;
-    let delay = 200;
-    let animationTimer = attackTime + shakeTime;
-
-    attackRight(playerModel, player.role);
-    opponentModel.removeClass("shake-horizontal")
-    let timerInterval = setInterval(function() {
-        animationTimer -= delay;
-        if (animationTimer == shakeTime) {
-            stopAttackRight(playerModel, player.role);
-            opponentModel.addClass("shake-horizontal");
-        }
-        if (animationTimer == 0) {
-            clearInterval(timerInterval);
-            opponentModel.removeClass("shake-horizontal");
-            enableButtons();
-        }
-    }, delay);
+    addRound();
+    enemyMove(yourMove);
+    healthChange();
+    gameOver();
 };
 
-addRound = async () => {
+const addRound = async () => {
     totalRounds += 1;
+    turnCounter.text(`Turn ${totalRounds}`);
+};
+
+// Takes the moves of the player and generates one for the enemy then runs the damage step
+enemyMove = (id) => {
+    let move = Math.floor((Math.random()*4) + 1);
+    console.log(move);
+    if (move <= 3) {    // 3/4 are attack
+        savedEnemyMove = 'attack';
+    } else {            // 1/2 are counter
+        savedEnemyMove = 'counter';
+    };
+    
+    damageStep (id, savedEnemyMove);
+    roundResults(res);
+};
+
+// Processes the move to a result
+const damageStep = async (y, e) => {
+    console.log(`y: ${y}, e: ${e}`);
+    if (y === 'attack' && e === 'attack') {
+        res = "Both players take damage!";
+        attackAnimation(opponentModel, opponent1.role, playerModel, player.role, 'player', 'yes');
+        attackAnimation(playerModel, player.role, opponentModel, opponent1.role, 'opponent', 'yes');
+
+        if (enemyHP >= 10 && yourHP >= 10) {
+            enemyHP -= 10;
+            yourHP -= 10;
+        } else {
+            enemyHP = 0;
+            yourHP = 0;
+        }
+    } else if (y === 'counter' && e === 'counter') {
+        res = "Defensive stances taken in vain!";
+        counterAnimation(playerModel, player.role);
+        counterAnimation(opponentModel, opponent1.role);
+        doubleCounter(playerModel, player.role, opponentModel, opponent1.role);
+
+    } else if (y === 'attack' && e === 'counter') {
+        res = "Enemy takes a defensive stance and prepares to counter.";
+        
+        counter(y, e);
+
+    } else if (y === 'counter' && e === 'attack') {
+        res = "You take a defensive and prepare a counter-attack!"
+        
+        counter(y, e);
+
+    }
 };
 
 // Set up counter action to attack
-counter = async (y, e) => {
+const counter = async (y, e) => {
     let move = Math.floor((Math.random()*5));
     if (move >= 3 && y === 'attack') {
         res = "Enemy's counter was successful!"
+        await counterAnimation(opponentModel, opponent1.role);
+        await attackAnimation(opponentModel, opponent1.role, playerModel, player.role, 'player', 'yes');
+
         yourHP -= 10;
+
     } else if (move >= 3 && y === 'counter') {
         res = "Your counter was successful!"
+        await counterAnimation(playerModel, player.role);
+        await attackAnimation(playerModel, player.role, opponentModel, opponent1.role, 'opponent', 'yes');
+
         enemyHP -= 10;
+
     } else if (move < 3 && y === 'attack') {
         res = "Enemy counter failed!";
+        await counterAnimation(opponentModel, opponent1.role);
+        await attackAnimation(playerModel, player.role, opponentModel, opponent1.role, 'opponent', 'yes');
+
         enemyHP -= 15;
+
     } else if (move < 3 && y === 'counter') {
         res = "Your counter was not successful!"
         yourHP -= 15;
+
+        await counterAnimation(playerModel, player.role);
+        await attackAnimation(opponentModel, opponent1.role, playerModel, player.role, 'player', 'yes');
+        
     }
 };
 
 // Displays results of the round
-roundResults = async () => {
-    announcements.innerHTML += res + "<br>";
+const roundResults = async () => {
+    announcements.append(`<p>${res}<p>`);
 };
 
-healthChange = async () => {
-    yourHealthBar.style.width = yourHP + "%";
-    enemyHealthBar.style.width = enemyHP + "%";
+const healthChange = async () => {
+    yourHealthBar.attr("style", `width: ${yourHP}%`);
+    enemyHealthBar.attr("style", `width: ${enemyHP}%`);
 };
+
+const gameOver = async () => {
+    if (yourHP === 0 || enemyHP === 0) {
+        res = "Game Over!";
+        roundResults(res);
+        disableButtons();
+        endButton.show();
+        endButton.on('click', endButtonHandler);
+    }
+};
+
+async function attackAnimation (attackerModel, attackerRole, defenderModel, defenderRole, defender,  damage) {
+    console.log('new attack');
+    const attackTime = 1200;
+    const delay = 200;
+    let animationTimer = attackTime;
+
+    attackRight(attackerModel, attackerRole);
+
+    let timerInterval = setInterval( () => {
+        animationTimer -= delay;
+        if (animationTimer == 0) {
+            clearInterval(timerInterval);
+            stopAttackRight(attackerModel, attackerRole);
+            if (damage) {
+                damageAnimation(defenderModel, defender, defenderRole);
+            } else {
+                defenderModel.removeClass(`${defenderRole}-counter-right`);
+                if (yourHP > 0 && enemyHP > 0) {
+                    enableButtons();
+                } else {
+                    disableButtons();
+                }
+            }
+        }
+    }, delay); 
+}
+
+function damageAnimation (defenderModel, defender, defenderRole) {
+    const shakeTime = 400;
+    const delay = 200;
+    let animationTimer = shakeTime;
+
+    defenderModel.addClass(`${defender}-shake`);
+
+    let timerInterval = setInterval( () => {
+        animationTimer -= delay;
+        if (animationTimer == 0) {
+            clearInterval(timerInterval);
+            defenderModel.removeClass(`${defender}-shake`);
+            defenderModel.removeClass(`${defenderRole}-counter-right`);
+            if (yourHP > 0 && enemyHP > 0) {
+                enableButtons();
+            } else {
+                disableButtons();
+            }
+        }
+    }, delay);
+}
+
+function doubleCounter( playerModel, playerRole, opponentModel, opponentRole) {
+    const turnTime = 1000;
+    const delay = 200;
+    let animationTimer = turnTime;
+
+    let timerInterval = setInterval( () => {
+        animationTimer -= delay;
+        if (animationTimer == 0) {
+            clearInterval(timerInterval);
+            playerModel.removeClass(`${playerRole}-counter-right`);
+            opponentModel.removeClass(`${opponentRole}-counter-right`);
+            enableButtons();
+        }
+    }, delay);
+}
 
 const endButtonHandler = async (event) => {
     event.preventDefault();
@@ -168,53 +255,6 @@ const endButtonHandler = async (event) => {
         document.location.replace('./play/end');
     } else {
         alert(response.statusText);
-    }
-};
-
-gameOver = async () => {
-    if (yourHP === 0 || enemyHP === 0) {
-        res = "Game Over!";
-        roundResults(res);
-        attackButton.disabled = true;
-        counterButton.disabled = true;
-        endButton.show();
-        endButton.on('click', endButtonHandler);
-    }
-};
-
-// The Game
-// Takes the moves of the player and generates one for the enemy then runs the damage step
-enemyMove = (id) => {
-    let move = Math.floor((Math.random()*4) + 1);
-    if (move <= 3) {
-        savedEnemyMove = 'attack';
-    } else {
-        savedEnemyMove = 'counter';
-    };
-    res = ("Your move is <span>" + id + "</span> and the computers move is <span>" + savedEnemyMove + "</span> on round " + totalRounds);
-    damageStep (id, savedEnemyMove);
-    roundResults(res);
-};
-
-// Processes the move to a result
-damageStep = async (y, e) => {
-    if (y === 'attack' && e === 'attack') {
-        res = "Both players take damage!";
-        if (enemyHP >= 10 && yourHP >= 10) {
-            enemyHP -= 10;
-            yourHP -= 10;
-        } else {
-            enemyHP = 0;
-            yourHP = 0;
-        }
-    } else if (y === 'counter' && e === 'counter') {
-        res = "Defensive stances taken in vain!";
-    } else if (y === 'attack' && e === 'counter') {
-        res = "Enemy takes a defensive stance and prepares to counter.";
-        counter(y, e);
-    } else if (y === 'counter' && e === 'attack') {
-        res = "You take a defensive and prepare a counter-attack!"
-        counter(y, e);
     }
 };
 
