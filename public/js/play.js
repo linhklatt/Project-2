@@ -210,6 +210,7 @@ async function turnEnd () {
         gameOverEl.show();
         endButton.show();
         endButton.on('click', endButtonHandler);
+        localStorage.setItem("playerWin", "true");
     }
     healthChange();
     roundResults(res);
@@ -289,4 +290,5 @@ const endButtonHandler = async (event) => {
     }
 };
 
+localStorage.setItem("playerWin", "false");
 init();

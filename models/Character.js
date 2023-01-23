@@ -30,6 +30,10 @@ Character.init(
       type: DataTypes.INTEGER,
       defaultValue: 10,
     },
+    wins: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

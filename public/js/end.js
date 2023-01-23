@@ -16,9 +16,16 @@ const homeBtn = $('#return-home');
 let health = player.health;
 let attack = player.attack;
 let counter = player.counter;
+let wins;
+const playerWin = localStorage.getItem("playerWin");
+if (playerWin == "true") {
+    wins = player.wins + 1;
+}
 
 const pointsEarned = 5;
 let pointsRemaining = pointsEarned;
+
+
 
 const pointsEl = $('#points-remaining');
 pointsEl.text(`You have ${pointsRemaining} points to spend`);
@@ -122,7 +129,7 @@ const homeButtonHandler = async (event) => {
     
     const response = await fetch(`/api/characters/${player.id}`, {
         method: 'PUT',
-        body: JSON.stringify({ health, attack, counter }),
+        body: JSON.stringify({ health, attack, counter, wins }),
         headers: {
             'Content-Type': 'application/json',
         },
