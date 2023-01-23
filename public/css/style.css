@@ -62,6 +62,12 @@
   justify-content: space-evenly;
   background-color: whitesmoke;
   width: 100%;
+  border-style: solid;
+  border-color: darkgrey;
+}
+
+#leaderboard-col-head {
+  border: black 2px solid;
 }
 
 .lb-col {
@@ -196,7 +202,7 @@
   gap: 8px;
 }
 
-.new-character-form p {
+.name-form p {
   margin-top: 16px;
   margin-bottom: 0px;
 }
@@ -212,8 +218,8 @@
 .play-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  padding: 16px;
 }
 
 .character-container {
@@ -295,28 +301,49 @@ button {
 .play-buttons {
   display: flex;
   flex-direction: row;
+  gap: 8px;
+}
+
+.announcements-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  border: black 2px solid;
+  width: 256px;
+  height: 64px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 #announcements {
-  border: black 2px solid;
-  background-color: whitesmoke;
-}
-
-#announcements p {
   margin: 0px;
 }
-#announcements span {
-  color: darkred;
+
+.end-button-container {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-#btn {
+#end-game {
+  padding: 2px 20px;
+  background-color: whitesmoke;
+  border: black 2px solid;
+}
+
+/* #btn {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   gap: 15px;
+} */
+
+.user-button {
+  background-color: whitesmoke;
+  
 }
-
-
 
 .playscreen-player {
   height: 192px;
@@ -339,24 +366,46 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 16px;
+}
+
+.player-stats {
+  display: flex;
+  flex-direction: column;
+  gap:8px;
 }
 
 .stats-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .stats-container .btn {
-  background-color: lightgrey;
+  background-color: white;
+  border: black 1px solid;
+  padding: 0px 6px;
 }
+.stats-container .stat-label {
+  width: 84px;
+  margin: 0px;
+  padding-right: 8px;
+}
+
 .stats-container p {
   margin: 0px;
+  padding: 0px 4px;
+}
+
+#points-remaining {
+  margin: 0px 0px 8px 0px;
 }
 
 #return-home {
-    background-color: #fbeee0;
+  margin-top: 8px;
+  background-color: #fbeee0;
+  border: black 2px solid;
 }
 
 /* -------------------------- Character Model Styles --------------------------*/

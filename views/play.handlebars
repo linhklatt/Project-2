@@ -33,16 +33,21 @@
 
   <div class="play-buttons">
     {{!-- These are the buttons used to control your character. --}}
-    <button class="btn btn-small" id="attack">ATTACK</button>
-    <button class="btn btn-small" id="counter">COUNTER</button>
+    <button class="user-button" id="attack">ATTACK</button>
+    <button class="user-button" id="counter">COUNTER</button>
     
     
   </div>
 
   {{!-- This will display the actions that are being committed. --}}
-  <div><p id="announcements"></p></div>
+  <div class="announcements-container">
+    <p id="announcements"></p>
+    <p id="game-over" style="display: none">GAME OVER</p>
+  </div>
 
-  <div class="btn btn-small" id="end-game" style="display: none">END</div>
+  <div class="end-button-container">
+    <button class="user-button" id="end-game" style="display: none">END</button>
+  </div>
 </div>
 
 <script src="../../js/play.js" type="module"></script>

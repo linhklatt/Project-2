@@ -120,7 +120,6 @@ counterDownBtn.on('click', () => {
 const homeButtonHandler = async (event) => {
     event.preventDefault();
     
-    console.log('hello');
     const response = await fetch(`/api/characters/${player.id}`, {
         method: 'PUT',
         body: JSON.stringify({ health, attack, counter }),
