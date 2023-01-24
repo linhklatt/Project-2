@@ -174,10 +174,6 @@
   border-color: black;
 }
 
-.create-description {
-
-}
-
 .create-btns {
   display: flex;
   flex-direction: row;
@@ -229,7 +225,8 @@
   gap: 24px;
 }
 
-.player, .opponent {
+.player,
+.opponent {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -239,7 +236,7 @@
   display: block;
 }
 
-.player-model, 
+.player-model,
 .opponent-model {
   height: 128px;
   width: 128px;
@@ -333,16 +330,8 @@ button {
   border: black 2px solid;
 }
 
-/* #btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 15px;
-} */
-
 .user-button {
   background-color: whitesmoke;
-  
 }
 
 .playscreen-player {
@@ -372,7 +361,7 @@ button {
 .player-stats {
   display: flex;
   flex-direction: column;
-  gap:8px;
+  gap: 8px;
 }
 
 .stats-container {
@@ -410,21 +399,39 @@ button {
 
 /* -------------------------- Character Model Styles --------------------------*/
 
-.warrior-static-right { background-image: url("../images/warr-static-right.png"); }
-.archer-static-right { background-image: url("../images/arch-static-right.png"); }
-.mage-static-right { background-image: url("../images/mage-static-right.png"); }
+.warrior-static-right {
+  background-image: url("../images/warr-static-right.png");
+}
+.archer-static-right {
+  background-image: url("../images/arch-static-right.png");
+}
+.mage-static-right {
+  background-image: url("../images/mage-static-right.png");
+}
 
-.warrior-walk-right { background-image: url("../images/warr-walk-right.gif"); }
-.archer-walk-right { background-image: url("../images/archer-walk-right.gif"); }
-.mage-walk-right { background-image: url("../images/mage-walk-right.gif"); }
+.warrior-walk-right {
+  background-image: url("../images/warr-walk-right.gif");
+}
+.archer-walk-right {
+  background-image: url("../images/archer-walk-right.gif");
+}
+.mage-walk-right {
+  background-image: url("../images/mage-walk-right.gif");
+}
 
-.warrior-counter-right { background-image: url("../images/warrior-counter-right.png"); }
-.archer-counter-right { background-image: url("../images/archer-counter-right.png"); }
-.mage-counter-right { background-image: url("../images/mage-counter-right.png"); }
+.warrior-counter-right {
+  background-image: url("../images/warrior-counter-right.png");
+}
+.archer-counter-right {
+  background-image: url("../images/archer-counter-right.png");
+}
+.mage-counter-right {
+  background-image: url("../images/mage-counter-right.png");
+}
 
-.test-left { 
-    background-image: url("../images/warr-static-right.png"); 
-  }
+.test-left {
+  background-image: url("../images/warr-static-right.png");
+}
 
 .warrior-attack-right {
   background-image: url("../images/warrior-attack-right.gif");
@@ -438,124 +445,125 @@ button {
 
 /* -------------------------- CSS Keyframes --------------------------*/
 .opponent-shake {
-	-webkit-animation: opponent-shake 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: opponent-shake 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  -webkit-animation: opponent-shake 400ms cubic-bezier(0.55, 0.085, 0.68, 0.53)
+    both;
+  animation: opponent-shake 400ms cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 @-webkit-keyframes opponent-shake {
   0%,
   100% {
     -webkit-transform: translateX(0);
-            transform: scaleX(-1) translateX(0);
+    transform: scaleX(-1) translateX(0);
   }
   10%,
   30%,
   50%,
   70% {
     -webkit-transform: translateX(-10px);
-            transform: scaleX(-1) translateX(-10px);
+    transform: scaleX(-1) translateX(-10px);
   }
   20%,
   40%,
   60% {
     -webkit-transform: translateX(10px);
-            transform: scaleX(-1) translateX(10px);
+    transform: scaleX(-1) translateX(10px);
   }
   80% {
     -webkit-transform: translateX(8px);
-            transform: scaleX(-1) translateX(8px);
+    transform: scaleX(-1) translateX(8px);
   }
   90% {
     -webkit-transform: translateX(-8px);
-            transform: scaleX(-1) translateX(-8px);
+    transform: scaleX(-1) translateX(-8px);
   }
 }
 @keyframes opponent-shake {
   0%,
   100% {
     -webkit-transform: translateX(0);
-            transform: scaleX(-1) translateX(0);
+    transform: scaleX(-1) translateX(0);
   }
   10%,
   30%,
   50%,
   70% {
     -webkit-transform: translateX(-10px);
-            transform: scaleX(-1) translateX(-10px);
+    transform: scaleX(-1) translateX(-10px);
   }
   20%,
   40%,
   60% {
     -webkit-transform: translateX(10px);
-            transform: scaleX(-1) translateX(10px);
+    transform: scaleX(-1) translateX(10px);
   }
   80% {
     -webkit-transform: translateX(8px);
-            transform: scaleX(-1) translateX(8px);
+    transform: scaleX(-1) translateX(8px);
   }
   90% {
     -webkit-transform: translateX(-8px);
-            transform: scaleX(-1) translateX(-8px);
+    transform: scaleX(-1) translateX(-8px);
   }
 }
 
 .player-shake {
-	-webkit-animation: player-shake 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: player-shake 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  -webkit-animation: player-shake 400ms cubic-bezier(0.55, 0.085, 0.68, 0.53)
+    both;
+  animation: player-shake 400ms cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 @-webkit-keyframes player-shake {
   0%,
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
   10%,
   30%,
   50%,
   70% {
     -webkit-transform: translateX(-10px);
-            transform: translateX(-10px);
+    transform: translateX(-10px);
   }
   20%,
   40%,
   60% {
     -webkit-transform: translateX(10px);
-            transform: translateX(10px);
+    transform: translateX(10px);
   }
   80% {
     -webkit-transform: translateX(8px);
-            transform: translateX(8px);
+    transform: translateX(8px);
   }
   90% {
     -webkit-transform: translateX(-8px);
-            transform: translateX(-8px);
+    transform: translateX(-8px);
   }
 }
 @keyframes player-shake {
   0%,
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
   10%,
   30%,
   50%,
   70% {
     -webkit-transform: translateX(-10px);
-            transform: translateX(-10px);
+    transform: translateX(-10px);
   }
   20%,
   40%,
   60% {
     -webkit-transform: translateX(10px);
-            transform: translateX(10px);
+    transform: translateX(10px);
   }
   80% {
     -webkit-transform: translateX(8px);
-            transform: translateX(8px);
+    transform: translateX(8px);
   }
   90% {
     -webkit-transform: translateX(-8px);
-            transform: translateX(-8px);
+    transform: translateX(-8px);
   }
 }
-
