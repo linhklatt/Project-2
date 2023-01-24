@@ -48,7 +48,8 @@ Steps to start the application locally:
     then
 
         npm start
-3. Open localhost:3001 in your web browser.
+
+3.  Open localhost:3001 in your web browser.
 
 ## Usage
 
@@ -92,6 +93,18 @@ Character sprites with Universal LPC Spritesheet Generator
 - sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/
 - Sprites by: drjamgo@hotmail.com, bluecarrot16, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt (ElizaWy), TheraHedwig, MuffinElZangano, Durrani, Johannes Sjolund (wulax), Stephen Challener (Redshrike), Michael Whitlock (bigbeargames), Matthew Krohn (makrohn), Nila122, Pierre Vigier (pvigier), Manuel Riecke (MrBeast), David Conway Jr. (JaidynReiman), Marcel van de Steeg (MadMarcel), Mandi Paugh, William.Thompsonj, Joe White, Daniel Eddeland (daneeklu), gr3yh47, Tracy, Thane Brimhall (pennomi), laetissima
 - Sprites contributed as part of the Liberated Pixel Cup project from OpenGameArt.org: http://opengameart.org/content/lpc-collection License: Creative Commons Attribution-ShareAlike 3.0 (CC-BY-SA 3.0) http://creativecommons.org/licenses/by-sa/3.0/
+
+archer_sprite_credits
+
+https://github.com/linhklatt/dbfighterz/blob/main/credits/archer_sprite_credits.txt
+
+mage_sprite_credits
+
+https://github.com/linhklatt/dbfighterz/blob/main/credits/mage_sprite_credits.txt
+
+warrior_sprite_credits
+
+https://github.com/linhklatt/dbfighterz/blob/main/credits/warrior_sprite_credits.txt
 
 ## Contribution
 
